@@ -4,6 +4,9 @@ import { configure, getStorybookUI } from '@storybook/react-native';
 
 import { AppRegistry } from 'react-native';
 import { loadStories } from './storyLoader';
+import { setupGlobalDecorators } from './global_decorators';
+
+setupGlobalDecorators();
 
 // import stories
 configure(() => {

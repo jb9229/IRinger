@@ -1,11 +1,15 @@
 import * as React from 'react';
 
+import styled, { DefaultTheme } from 'styled-components/native';
+
 import { Button } from 'dooboo-ui';
 import CenterView from '../CenterView';
 import { storiesOf } from '@storybook/react-native';
-import styled from 'styled-components/native';
 
 const Image = styled.Image``;
+const IRinger = styled(Button)<DefaultTheme>`
+  background-color: ${(props) => props.theme.btnPrimary};
+`;
 
 storiesOf('Atoms', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
@@ -38,7 +42,7 @@ storiesOf('Atoms', module)
         text={'Accent button '}
       />
       {/* Button Style Secondary   */}
-      <Button
+      <IRinger
         hoverTextStyle={{
           color: '#34AFF9',
         }}
