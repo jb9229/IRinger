@@ -5,5 +5,6 @@ module.exports = {
     'react/display-name': 0,
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/indent': ['error', 2],
-  },
+    'comma-dangle': ['error', 'never']
+  }
 };

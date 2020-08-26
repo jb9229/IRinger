@@ -1,16 +1,18 @@
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { ColorSchemeName } from 'react-native';
 
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
+
+import BottomTabNavigator from './BottomTabNavigator';
+import { ColorSchemeName } from 'react-native';
+import LinkingConfiguration from './LinkingConfiguration';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
-import BottomTabNavigator from './BottomTabNavigator';
-import LinkingConfiguration from './LinkingConfiguration';
+import SignInScreen from 'src/container/signin';
+import { createStackNavigator } from '@react-navigation/stack';
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }): React.ReactElement {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
@@ -24,9 +26,13 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 // Read more here: https://reactnavigation.org/docs/modal
 const Stack = createStackNavigator<RootStackParamList>();
 
-function RootNavigator() {
+function RootNavigator(): React.ReactElement {
+  const token = undefined;
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {!token && (
+        <Stack.Screen name="SignIn" component={SignInScreen} />
+      )}
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>

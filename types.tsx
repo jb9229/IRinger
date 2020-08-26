@@ -1,11 +1,12 @@
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
+  SignIn: undefined;
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  링거: undefined;
+  내정보: undefined;
 };
 
 export type TabOneParamList = {

@@ -4,45 +4,45 @@ import styled, { DefaultTheme } from 'styled-components/native';
 
 import { Button } from 'dooboo-ui';
 import CenterView from '../CenterView';
+import DefaultButton from '../../../src/components/atoms/Button';
 import { storiesOf } from '@storybook/react-native';
 
 const Image = styled.Image``;
+const LoadingButton = styled(Button)<DefaultTheme>`
+  
+`;
+const AccentButton = styled(Button)`
+  background-color: #109CF1;
+  shadow-color: black;
+  shadow-offset: {
+    width: 0;
+    height: 4;
+  };
+  shadow-opacity: 0.24;
+  shadow-radius: 16.0;
+  elevation: 10;
+  border-radius: 4;
+`;
 const IRinger = styled(Button)<DefaultTheme>`
-  background-color: ${(props) => props.theme.btnPrimary};
+  /* background-color: ${(props) => props.theme.btnPrimary}; */
 `;
 
 storiesOf('Atoms', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
   .add('button', () => (
     <>
-      <Button testID="btn" isLoading={false} onPress={() => {}}>
+      <LoadingButton testID="btn" isLoading={false} onPress={() => {}}>
           😀 😎 👍 💯
-      </Button>
+      </LoadingButton>
       {/* Button Style Accent  */}
-      <Button
-        style={{
-          backgroundColor: '#109CF1',
-        }}
-        hoverStyle={{
-          backgroundColor: '#34AFF9',
-        }}
-        Accent={{
-          shadowColor: 'black',
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowOpacity: 0.24,
-          shadowRadius: 16.0,
-          elevation: 10,
-          borderRadius: 4,
-        }}
+      <AccentButton
         textStyle={{ color: '#FFFFFF' }}
         onPress={() => alert('Clicked')}
         text={'Accent button '}
       />
+      <DefaultButton text="text" />
       {/* Button Style Secondary   */}
-      <IRinger
+      <Button
         hoverTextStyle={{
           color: '#34AFF9',
         }}

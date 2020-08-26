@@ -1,3 +1,9 @@
+import { DefaultTheme } from 'styled-components/native';
+
+export interface DefaultStyledProps {
+  theme: DefaultTheme;
+}
+
 export const colors = {
   whiteGray: '#f7f6f3',
   dusk: 'rgb(65,77,107)',

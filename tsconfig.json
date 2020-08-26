@@ -16,8 +16,8 @@
       "molecules/*": ["src/components/molecules/*"],
       "organisms/*": ["src/components/organisms/*"],
       "templates/*": ["src/components/templates/*"]
-    },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "storybook/**/*.ts", "storybook/**/*.tsx"],
-    "exclude": ["node_modules", "**/*.test.tsx", "**/*.spec.ts", "src/__generated__"],
-  }
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "storybook/**/*.ts", "storybook/**/*.tsx"],
+  "exclude": ["node_modules", "**/*.test.tsx", "**/*.spec.ts", "src/__generated__"],
 }
