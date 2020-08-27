@@ -8,15 +8,15 @@ const DefaultButton = styled(Button).attrs(() => ({
 }))`
   /* background-color: #109CF1; */
   background-color: ${(props) => props.theme.backgroundDark};
-  shadow-color: black;
+  /* shadow-color: black;
   shadow-offset: {
     width: 0;
     height: 4;
   };
-  shadow-opacity: 0.24;
-  shadow-radius: 16.0;
+  shadow-opacity: 0.24; */
+  /* shadow-radius: 16.0; */
   elevation: 10;
-  border-radius: 4;
+  /* border-radius: 4; */
 `;
 
 export default DefaultButton;

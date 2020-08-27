@@ -46,19 +46,19 @@ storiesOf('Atoms', module)
         hoverTextStyle={{
           color: '#34AFF9',
         }}
-        Secondary={{
-          borderColor: '#109CF1',
-          borderWidth: 2,
-          shadowColor: 'black',
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowOpacity: 0.24,
-          shadowRadius: 16.0,
-          elevation: 10,
-          borderRadius: 4,
-        }}
+        // Secondary={{
+        //   borderColor: '#109CF1',
+        //   borderWidth: 2,
+        //   shadowColor: 'black',
+        //   shadowOffset: {
+        //     width: 0,
+        //     height: 4,
+        //   },
+        //   shadowOpacity: 0.24,
+        //   shadowRadius: 16.0,
+        //   elevation: 10,
+        //   borderRadius: 4,
+        // }}
         style={{
           marginVertical: 40,
         }}

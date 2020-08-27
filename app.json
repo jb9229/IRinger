@@ -2,9 +2,10 @@
   "expo": {
     "name": "IRinger",
     "slug": "IRinger",
-    "version": "1.0.0",
+    "description": "IRinger Project",
+    "version": "0.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/splash.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -23,6 +24,18 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "ShinsungTK",
+            "project": "iringer",
+            "authToken": "8970fe346a1649108364251ffa031fa91dca4e89584247ff95c731c767de9cfd"
+          }
+        }
+      ]
     }
   }
 }
