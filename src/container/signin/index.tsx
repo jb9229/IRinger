@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { RootStackParamList } from 'types';
-import SigninLayout from 'src/components/template/SinginLayout';
+import SigninLayout from 'templates/SinginLayout';
 import { StackScreenProps } from '@react-navigation/stack';
 
 interface Props {

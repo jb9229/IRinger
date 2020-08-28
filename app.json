@@ -1,9 +1,10 @@
 {
   "expo": {
     "name": "IRinger",
-    "slug": "IRinger",
+    "slug": "iringer_alpha",
     "description": "IRinger Project",
     "version": "0.0.0",
+    "privacy": "public",
     "orientation": "portrait",
     "icon": "./assets/images/splash.png",
     "scheme": "myapp",

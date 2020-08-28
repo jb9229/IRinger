@@ -3,17 +3,18 @@ import * as React from 'react';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
 
+// import TabTwoScreen from '../screens/TabTwoScreen';
+import AppSettingScreen from 'container/app-setting';
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import styled from 'styled-components/native';
 import useColorScheme from '../hooks/useColorScheme';
 
 const Image = styled.Image`
-  width: 32;
-  height: 32;
+  width: 32px;
+  height: 32px;
 `;
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -34,7 +35,7 @@ export default function BottomTabNavigator(): React.ReactElement {
       />
       <BottomTab.Screen
         name="내정보"
-        component={TabTwoNavigator}
+        component={AppSettingScreen}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-information-circle-outline" color={color} />
         }}
