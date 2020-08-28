@@ -25,18 +25,6 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    },
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "ShinsungTK",
-            "project": "iringer",
-            "authToken": "8970fe346a1649108364251ffa031fa91dca4e89584247ff95c731c767de9cfd"
-          }
-        }
-      ]
     }
   }
 }

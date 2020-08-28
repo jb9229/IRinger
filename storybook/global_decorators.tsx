@@ -3,10 +3,9 @@ import * as React from 'react';
 import { dark, light } from '../src/theme';
 
 import { ThemeProvider } from '@dooboo-ui/theme';
-import { View } from 'react-native';
 import { addDecorator } from '@storybook/react-native';
 
-const ThemeProviderDecorator = (storyFn) => (
+const ThemeProviderDecorator = (storyFn: any): React.ReactElement => (
   <ThemeProvider customTheme={{ light, dark }}>{storyFn()}</ThemeProvider>
 );
 
@@ -16,7 +15,7 @@ const ThemeProviderDecorator = (storyFn) => (
 //   </View>
 // );
 
-export const setupGlobalDecorators = () => {
+export const setupGlobalDecorators = (): void => {
   //* the order is important, the decoratos wrap from bottom to top
   // addDecorator(SafeZonDecorator);
   addDecorator(ThemeProviderDecorator);

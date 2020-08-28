@@ -16,12 +16,13 @@ const AccentButton = styled(Button)`
   shadow-color: black;
   shadow-offset: {
     width: 0;
-    height: 4;
+    height: 4px;
   };
   shadow-opacity: 0.24;
-  shadow-radius: 16.0;
+  shadow-radius: 16.0px;
   elevation: 10;
-  border-radius: 4;
+  border-radius: 4px;
+  font-family: 'space-mono';
 `;
 const IRinger = styled(Button)<DefaultTheme>`
   /* background-color: ${(props) => props.theme.btnPrimary}; */
@@ -36,7 +37,7 @@ storiesOf('Atoms', module)
       </LoadingButton>
       {/* Button Style Accent  */}
       <AccentButton
-        textStyle={{ color: '#FFFFFF' }}
+        textStyle={{ color: '#FFFFFF', fontFamily: 'space-mono' }}
         onPress={() => alert('Clicked')}
         text={'Accent button '}
       />

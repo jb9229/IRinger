@@ -19,21 +19,14 @@ module.exports = function(api) {
           ],
           root: ['./'],
           alias: {
+            assets: './assets',
             src: './src',
-            navigation: './src/navigation',
-            constants: './src/constants',
-            types: './src/types',
-            common: './src/common',
-            screens: './src/screens',
-            auth: './src/auth',
-            api: './src/api',
-            utils: './src/utils',
+            hooks: './src/hooks',
             atoms: './src/components/atoms',
             molecules: './src/components/molecules',
             organisms: './src/components/organisms',
             templates: './src/components/templates',
-            container: './src/container',
-            native_modules: './src/native_modules'
+            container: './src/container'
           }
         }
       ]

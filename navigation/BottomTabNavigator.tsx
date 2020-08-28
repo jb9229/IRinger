@@ -10,7 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import TabOneScreen from '../screens/TabOneScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import styled from 'styled-components/native';
-import useColorScheme from '../hooks/useColorScheme';
+import useColorScheme from '../src/hooks/useColorScheme';
 
 const Image = styled.Image`
   width: 32px;
