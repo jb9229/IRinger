@@ -1,4 +1,5 @@
-module.exports = function(api) {
+module.exports = function(api)
+{
   api.cache(true);
   return {
     presets: ['babel-preset-expo', '@babel/preset-typescript'],
@@ -22,11 +23,12 @@ module.exports = function(api) {
             assets: './assets',
             src: './src',
             hooks: './src/hooks',
+            container: './src/container',
+            contexts: './src/contexts',
             atoms: './src/components/atoms',
             molecules: './src/components/molecules',
             organisms: './src/components/organisms',
-            templates: './src/components/templates',
-            container: './src/container'
+            templates: './src/components/templates'
           }
         }
       ]

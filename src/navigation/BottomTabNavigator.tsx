@@ -1,16 +1,17 @@
 import * as React from 'react';
 
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
-import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
+import { AppSettingParamList, BottomTabParamList, RingerListParamList } from './types';
 
 // import TabTwoScreen from '../screens/TabTwoScreen';
 import AppSettingScreen from 'container/app-setting';
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
-import TabOneScreen from '../screens/TabOneScreen';
+import RingerCreateScreen from 'container/ringer/create';
+import RingerListScreen from 'container/ringer/list';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import styled from 'styled-components/native';
-import useColorScheme from '../src/hooks/useColorScheme';
+import useColorScheme from 'hooks/useColorScheme';
 
 const Image = styled.Image`
   width: 32px;
@@ -19,23 +20,24 @@ const Image = styled.Image`
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
-export default function BottomTabNavigator(): React.ReactElement {
+export default function BottomTabNavigator(): React.ReactElement
+{
   const colorScheme = useColorScheme();
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="링거"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
         name="링거"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Image source={require('../assets/images/iRingerIcon.png')} />
+          tabBarIcon: ({ color }) => <Image source={require('assets/images/iRingerIcon.png')} />
         }}
       />
       <BottomTab.Screen
         name="내정보"
-        component={AppSettingScreen}
+        component={AppSettingNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-information-circle-outline" color={color} />
         }}
@@ -52,30 +54,32 @@ function TabBarIcon(props: { name: string; color: string }): React.ReactElement 
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const RingerListStack = createStackNavigator<RingerListParamList>();
 
-function TabOneNavigator(): React.ReactElement {
+function TabOneNavigator(): React.ReactElement
+{
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <RingerListStack.Navigator>
+      <RingerListStack.Screen
+        name="RingerListScreen"
+        component={RingerListScreen}
+        options={{ headerTitle: 'Ringer List' }}
       />
-    </TabOneStack.Navigator>
+    </RingerListStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const AppSettingStack = createStackNavigator<AppSettingParamList>();
 
-function TabTwoNavigator(): React.ReactElement {
+function AppSettingNavigator(): React.ReactElement
+{
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <AppSettingStack.Navigator>
+      <AppSettingStack.Screen
+        name="AppSettingScreen"
+        component={AppSettingScreen}
+        options={{ headerTitle: 'App Setting' }}
       />
-    </TabTwoStack.Navigator>
+    </AppSettingStack.Navigator>
   );
 }

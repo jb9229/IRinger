@@ -2,6 +2,7 @@ export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
   SignIn: undefined;
+  RingerCreate: undefined;
 };
 
 export type BottomTabParamList = {
@@ -9,10 +10,10 @@ export type BottomTabParamList = {
   내정보: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type RingerListParamList = {
+  RingerListScreen: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type AppSettingParamList = {
+  AppSettingScreen: undefined;
 };

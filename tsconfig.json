@@ -11,9 +11,11 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "assets/*": ["assets*"],
+      "assets/*": ["assets/*"],
       "src/*": ["src/*"],
       "hooks/*": ["src/hooks/*"],
+      "container/*": ["src/container/*"],
+      "contexts/*": ["src/contexts/*"],
       "atoms/*": ["src/components/atoms/*"],
       "molecules/*": ["src/components/molecules/*"],
       "organisms/*": ["src/components/organisms/*"],

@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { EditText, EditTextInputType } from 'dooboo-ui';
 
-import DefaultButton from '../atoms/Button';
+import SoildButton from '../atoms/Button/Solid';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -13,11 +13,11 @@ const Container = styled.View`
   padding-right: 20px;
 `;
 
-const LoginButton = styled(DefaultButton)`
+const LoginButton = styled(SoildButton)`
   margin-bottom: 10px;
 `;
 
-const GuestButton = styled(DefaultButton)`
+const GuestButton = styled(SoildButton)`
   margin-top: 10px;
 `;
 

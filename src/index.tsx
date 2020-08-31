@@ -2,7 +2,7 @@ import * as Sentry from 'sentry-expo';
 
 import { dark, light } from 'src/theme';
 
-import Navigation from '../navigation';
+import Navigation from './navigation';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
@@ -20,9 +20,12 @@ export default function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
-  if (!isLoadingComplete) {
+  if (!isLoadingComplete)
+  {
     return null;
-  } else {
+  }
+  else
+  {
     return (
       <ThemeProvider customTheme={{ light, dark }}>
         <SafeAreaProvider>

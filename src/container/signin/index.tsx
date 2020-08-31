@@ -1,17 +1,18 @@
 import * as React from 'react';
 
-import { RootStackParamList } from 'types';
+import { RootStackParamList } from 'src/navigation/types';
 import SigninLayout from 'templates/SinginLayout';
-import { StackScreenProps } from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 interface Props {
-  navigation: StackScreenProps<RootStackParamList, 'SignIn'>
+  navigation: StackNavigationProp<RootStackParamList, 'SignIn'>
 }
 
-const Signin:React.FC<Props> = (props): React.ReactElement => {
+const Signin:React.FC<Props> = (props): React.ReactElement =>
+{
   return (
     <SigninLayout
-      onClickGuest={() => { props.navigation.replace('Root'); }}
+      onClickGuest={() => { props.navigation.replace('Root') }}
     />
   );
 };

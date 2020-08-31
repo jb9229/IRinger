@@ -4,48 +4,46 @@ import styled, { DefaultTheme } from 'styled-components/native';
 
 import { Button } from 'dooboo-ui';
 import CenterView from '../CenterView';
-import DefaultButton from '../../../src/components/atoms/Button';
+import GhostButton from 'src/components/atoms/Button/Ghost';
+import SoildButton from 'src/components/atoms/Button/Solid';
 import { storiesOf } from '@storybook/react-native';
 
-const Image = styled.Image``;
+const Container = styled.View`
+  flex: 1;
+`;
+const ScrollView = styled.ScrollView`
+  flex: 1;
+`;
+const Title = styled.Text`
+  font-size: 24px;
+  margin-bottom: 40px;
+`;
+const SubTitle = styled.Text`
+`;
 const LoadingButton = styled(Button)<DefaultTheme>`
-  
-`;
-const AccentButton = styled(Button)`
-  background-color: #109CF1;
-  shadow-color: black;
-  shadow-offset: {
-    width: 0;
-    height: 4px;
-  };
-  shadow-opacity: 0.24;
-  shadow-radius: 16.0px;
-  elevation: 10;
-  border-radius: 4px;
-  font-family: 'space-mono';
-`;
-const IRinger = styled(Button)<DefaultTheme>`
-  /* background-color: ${(props) => props.theme.btnPrimary}; */
 `;
 
 storiesOf('Atoms', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-  .add('button', () => (
-    <>
-      <LoadingButton testID="btn" isLoading={false} onPress={() => {}}>
+  .add('buttons', () => (
+    <Container>
+      <Title>IRinger Button Types & Style</Title>
+
+      {/* <LoadingButton testID="btn" isLoading={false} onPress={() => {}}>
           😀 😎 👍 💯
-      </LoadingButton>
+      </LoadingButton> */}
       {/* Button Style Accent  */}
-      <AccentButton
-        textStyle={{ color: '#FFFFFF', fontFamily: 'space-mono' }}
+      <SubTitle>Brand or Solid or Contained Button</SubTitle>
+      <SoildButton
         onPress={() => alert('Clicked')}
-        text={'Accent button '}
+        text={'Solid button'}
       />
-      <DefaultButton text="text" />
+      <SubTitle>Ghost Button</SubTitle>
+      <GhostButton text="Ghost button" />
       {/* Button Style Secondary   */}
       <Button
         hoverTextStyle={{
-          color: '#34AFF9',
+          color: '#34AFF9'
         }}
         // Secondary={{
         //   borderColor: '#109CF1',
@@ -110,5 +108,5 @@ storiesOf('Atoms', module)
         }}>
         FACEBOOK SIGN IN
       </Button>
-    </>
+    </Container>
   ));

@@ -1,11 +1,15 @@
 import 'dotenv/config';
 
+import { loadingStorybook } from './App';
+
 export default ({ config }): any =>
 {
   console.log(config);
   return {
     ...config,
     version: process.env.MY_CUSTOM_PROJECT_VERSION || '0.0.0',
+    slug: loadingStorybook ? 'iringer_story' : config.slug,
+    icon: loadingStorybook ? './assets/images/storyIcon_32.png' : config.icon,
     hooks: {
       ...config.hooks,
       postPublish: [
