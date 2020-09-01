@@ -3,51 +3,53 @@ import * as React from 'react';
 import { Animated, ScrollView } from 'react-native';
 import styled, { DefaultTheme } from 'styled-components/native';
 
-interface StyleProps{
+interface StyledProps{
   theme: DefaultTheme;
-  buttonDisable?: boolean;
+  disabled?: boolean;
   bookmarked?: boolean;
 }
 
 const HeaderView = styled.View`
-  background-color: white;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 50;
+  height: 50px;
   shadowColor: black;
-  shadow-radius: 2;
+  shadow-radius: 2px;
   shadow-offset: 0px 4px;
 `;
 const LeftContent = styled.View`
-  width: 95;
-  padding-left: 10;
+  width: 95px;
+  padding-left: 10px;
 `;
 const CenterContent = styled.View`
   flex: 1;
   align-items: center;
 `;
-export const HeadRightContentWrap = styled.View`
+export const RightContent = styled.View`
+  width: 95px;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  width: 95;
+  padding-right: 10px;
 `;
 export const NaviTitle = styled.Text`
   color: black;
+  font-size: 21px;
 `;
 const NaveGobackTO = styled.TouchableOpacity`
-  width: 30;
+  width: 30px;
 `;
 const NaviImage = styled.Image`
   
 `;
-export const HeadActionButtonTO = styled.TouchableOpacity`
+export const RightActionTO = styled.TouchableOpacity`
 `;
 export const HeadActionButtonTO2 = styled.TouchableOpacity`
 `;
-export const HeadActionButtonText = styled.Text`
-  color: black;
+export const RightActionText = styled.Text<StyledProps>`
+  color: ${(props) => props.disabled ? props.theme.disabled : props.theme.primary};
+  font-size: 17px;
 `;
 
 export enum NaviHeaderIconType {
@@ -56,20 +58,18 @@ export enum NaviHeaderIconType {
 
 interface Props {
   title?: string;
-  bookmark?: boolean;
-  buttonText?: string;
-  buttonText2?: string;
+  rightActionText: string;
   iconType?: NaviHeaderIconType;
   scrollViewRef?: React.RefObject<ScrollView>;
   isScrolling?: boolean;
   onClickNavi: () => void;
   onClickBookMark?: () => void;
   onClickIcon?: () => void;
-  onClickButton?: () => void;
-  onClickButton2?: () => void;
+  onClickRightAction?: () => void;
 }
 
-const NaviHeader: React.FC<Props> = (props) => {
+const NaviHeader: React.FC<Props> = (props) =>
+{
   const headerShadowOpacity = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() =>
@@ -78,6 +78,7 @@ const NaviHeader: React.FC<Props> = (props) => {
     Animated.timing(
       headerShadowOpacity,
       {
+        useNativeDriver: true,
         toValue,
         duration: 300
       }
@@ -111,8 +112,17 @@ const NaviHeader: React.FC<Props> = (props) => {
         {!!props.title && (<NaviTitle numberOfLines={1}>{props.title}</NaviTitle>)}
       </CenterContent>
 
-      <HeadRightContentWrap>
-      </HeadRightContentWrap>
+      <RightContent>
+        {!!props.rightActionText && (
+          <RightActionTO
+            disabled={!props.onClickRightAction}
+            hitSlop={{ left: 10, right: 10, top: 5, bottom: 5 }}
+            onPress={props.onClickRightAction}
+          >
+            <RightActionText disabled={!props.onClickRightAction}>{props.rightActionText}</RightActionText>
+          </RightActionTO>
+        )}
+      </RightContent>
     </HeaderView>
   );
 };

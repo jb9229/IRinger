@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { AppSettingParamList, BottomTabParamList, RingerListParamList } from './types';
+import { AdminSettingParamList, AppSettingParamList, BottomTabParamList, RingerListParamList } from './types';
 
+import AdminSettingScreen from 'container/admin';
 // import TabTwoScreen from '../screens/TabTwoScreen';
 import AppSettingScreen from 'container/app-setting';
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
-import RingerCreateScreen from 'container/ringer/create';
 import RingerListScreen from 'container/ringer/list';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -26,10 +26,10 @@ export default function BottomTabNavigator(): React.ReactElement
 
   return (
     <BottomTab.Navigator
-      initialRouteName="링거"
+      initialRouteName="링거 모니터링"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="링거"
+        name="링거 모니터링"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <Image source={require('assets/images/iRingerIcon.png')} />
@@ -40,6 +40,13 @@ export default function BottomTabNavigator(): React.ReactElement
         component={AppSettingNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-information-circle-outline" color={color} />
+        }}
+      />
+      <BottomTab.Screen
+        name="관리자"
+        component={AdminSettingNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-settings" color={color} />
         }}
       />
     </BottomTab.Navigator>
@@ -69,6 +76,9 @@ function TabOneNavigator(): React.ReactElement
   );
 }
 
+/**
+ * 내정보 네비게이팅
+ */
 const AppSettingStack = createStackNavigator<AppSettingParamList>();
 
 function AppSettingNavigator(): React.ReactElement
@@ -81,5 +91,23 @@ function AppSettingNavigator(): React.ReactElement
         options={{ headerTitle: 'App Setting' }}
       />
     </AppSettingStack.Navigator>
+  );
+}
+
+/**
+ * 관리자 네비게이팅
+ */
+const AdminSettingStack = createStackNavigator<AdminSettingParamList>();
+
+function AdminSettingNavigator(): React.ReactElement
+{
+  return (
+    <AdminSettingStack.Navigator>
+      <AdminSettingStack.Screen
+        name="AdminSettingScreen"
+        component={AdminSettingScreen}
+        options={{ headerTitle: 'Admin Setting' }}
+      />
+    </AdminSettingStack.Navigator>
   );
 }

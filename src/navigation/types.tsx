@@ -6,8 +6,9 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  링거: undefined;
+  '링거 모니터링': undefined;
   내정보: undefined;
+  관리자: undefined;
 };
 
 export type RingerListParamList = {
@@ -16,4 +17,8 @@ export type RingerListParamList = {
 
 export type AppSettingParamList = {
   AppSettingScreen: undefined;
+};
+
+export type AdminSettingParamList = {
+  AdminSettingScreen: undefined;
 };

@@ -1,41 +1,79 @@
 import * as React from 'react';
 
-import { EditText } from 'dooboo-ui';
+import { FormEditText } from '../atoms/TextInput/Form';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import NaviHeader from 'molecules/NaviHeader';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { getString } from 'src/STRINGS';
 import styled from 'styled-components/native';
+import { useRingerCreateContext } from 'src/container/ringer/create/RingerCreateContext';
 
+const StyledSafeAreaView = styled(SafeAreaView)`
+  flex: 1;
+`;
 const Container = styled.View`
   flex: 1;
   background-color: white;
 `;
-const Title = styled.Text``;
+const StyledKeyboardAwareScrollView = styled(KeyboardAwareScrollView)`
+  padding-horizontal: 20px;
+`;
 
-const RingerCreateLayout:React.FC = (): React.ReactElement => {
+const RingerCreateLayout:React.FC = (): React.ReactElement =>
+{
+  const { createDto, errorData, onClickGoBack, onSubmit } = useRingerCreateContext();
+
+  const [isValidSubmit, setValidSubmit] = React.useState(false);
+
+  const validSubmit = (): boolean =>
+  {
+    if (!createDto.userId) { if (isValidSubmit) { setValidSubmit(false) } return false }
+    if (!createDto.sn) { if (isValidSubmit) { setValidSubmit(false) } return false }
+    if (!createDto.ringerName) { if (isValidSubmit) { setValidSubmit(false) } return false }
+    if (!createDto.hospital) { if (isValidSubmit) { setValidSubmit(false) } return false }
+
+    if (!isValidSubmit) { setValidSubmit(true) }
+    return true;
+  };
+
   return (
-    <Container>
-      <NaviHeader
-        title="링거 추가"
-        rightActionText=""
-        onClickNavi={() => {}}
-        onClickRightAction={() => {}}
-      />
-      <EditText
-        label="사용자 아이디"
-        placeholder="아이드를 입력하세요"
-      />
-      <EditText
-        label="시리얼 넘버"
-        placeholder="시리얼 넘버를 입력하세요"
-      />
-      <EditText
-        label="장치명"
-        placeholder="장치명을 입력하세요"
-      />
-      <EditText
-        label="병원"
-        placeholder="병원명을 입려하세요"
-      />
-    </Container>
+    <StyledSafeAreaView>
+      <Container>
+        <NaviHeader
+          title="링거 추가"
+          rightActionText={getString('button.add')}
+          onClickNavi={onClickGoBack}
+          onClickRightAction={isValidSubmit ? onSubmit : undefined}
+        />
+        <StyledKeyboardAwareScrollView>
+          <FormEditText
+            onChangeText={(text) => { createDto.userId = text; validSubmit() }}
+            label="사용자 아이디"
+            placeholder="아이드를 입력하세요"
+            errorText={errorData.userId}
+          />
+          <FormEditText
+            onChangeText={(text) => { createDto.sn = text; validSubmit() }}
+            label="시리얼 넘버"
+            placeholder="시리얼 넘버를 입력하세요"
+            errorText={errorData.sn}
+          />
+          <FormEditText
+            onChangeText={(text) => { createDto.ringerName = text; validSubmit() }}
+            label="장치명"
+            placeholder="장치명을 입력하세요"
+            errorText={errorData.ringerName}
+          />
+          <FormEditText
+            onChangeText={(text) => { createDto.hospital = text; validSubmit() }}
+            label="병원"
+            placeholder="병원명을 입려하세요"
+            errorText={errorData.hospital}
+          />
+        </StyledKeyboardAwareScrollView>
+      </Container>
+    </StyledSafeAreaView>
   );
-}
+};
+
 export default RingerCreateLayout;

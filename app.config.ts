@@ -4,7 +4,7 @@ import { loadingStorybook } from './App';
 
 export default ({ config }): any =>
 {
-  console.log(config);
+  // console.log('>>> version: ', process.env.MY_CUSTOM_PROJECT_VERSION);
   return {
     ...config,
     version: process.env.MY_CUSTOM_PROJECT_VERSION || '0.0.0',

@@ -1,6 +1,8 @@
 import * as Linking from 'expo-linking';
 import * as React from 'react';
 
+import Constants from 'expo-constants';
+import { loadingStorybook } from '../../../App';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -42,7 +44,7 @@ const AppSettingLayout:React.FC = (): React.ReactElement => {
         </ContactWrap>
         <VersionWrap>
           <VersionLabel>Version: </VersionLabel>
-          <Version>v0.0.0</Version>
+          <Version>{loadingStorybook ? `story_${Constants.manifest.version}` : Constants.manifest.version}</Version>
         </VersionWrap>
       </Footer>
     </Container>

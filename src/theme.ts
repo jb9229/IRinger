@@ -22,10 +22,13 @@ export const colors = {
   cloudyBlue: 'rgb(175,194,219)',
   lightSalmon: '#f5aeae',
   google: 'rgb(224,66,56)',
-  facebook: 'rgb(52,89,151)',
+  facebook: 'rgb(52,89,151)'
 };
 
 export const light = {
+  primary: colors.dodgerBlue,
+  disabled: colors.mediumGray,
+
   background: colors.lightBackground,
   backgroundDark: colors.dodgerBlue,
   btnPrimary: colors.dodgerBlue,
@@ -41,18 +44,20 @@ export const light = {
   lineColor: colors.paleGray,
   indicatorColor: colors.dodgerBlue,
   inactiveColor: '#a3a3a3',
-  primary: colors.dodgerBlue,
   primaryLight: colors.skyBlue,
   searchBackground: 'rgb(247,248,251)',
   status: colors.greenishCyan,
   placeholder: colors.cloudyBlue,
   focused: colors.dodgerBlue,
-  placeholderFocused: colors.mellowBlue,
+  placeholderFocused: colors.mellowBlue
 };
 
 export type Theme = typeof light;
 
 export const dark = {
+  primary: '#1F2324',
+  disabled: colors.mediumGray,
+
   background: colors.darkBackground,
   backgroundDark: '#262A2C',
   btnPrimary: '#262A2C',
@@ -68,11 +73,10 @@ export const dark = {
   lineColor: '#515557',
   indicatorColor: 'white',
   inactiveColor: colors.paleGray,
-  primary: '#1F2324',
   primaryLight: '#262A2C',
   searchBackground: '#243447',
   status: colors.greenishCyan,
   placeholder: colors.cloudyBlue,
   focused: 'lightcoral',
-  placeholderFocused: colors.lightSalmon,
+  placeholderFocused: colors.lightSalmon
 };

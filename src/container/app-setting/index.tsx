@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import AppSettingLayout from 'templates/AppSettingLayout';
 
-const AppSettingContainer:React.FC = (): React.ReactElement => {
+const AppSettingContainer:React.FC = (): React.ReactElement =>
+{
   return (
     <AppSettingLayout />
   );

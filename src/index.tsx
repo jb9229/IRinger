@@ -16,7 +16,8 @@ Sentry.init({
   debug: true
 });
 
-export default function App(): React.ReactElement | null {
+export default function App(): React.ReactElement | null
+{
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 

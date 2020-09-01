@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { Provider } from './RingerListContext';
+import { Provider } from './AdminSettingContext';
 import { RootStackParamList } from 'src/navigation/types';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, 'RingerCreate'>
 }
-const RingerListProvider:React.FC<Props> = (props): React.ReactElement =>
+const AdminSettingProvider:React.FC<Props> = (props): React.ReactElement =>
 {
   const states = {
   };
@@ -24,4 +24,4 @@ const RingerListProvider:React.FC<Props> = (props): React.ReactElement =>
   );
 };
 
-export default RingerListProvider;
+export default AdminSettingProvider;

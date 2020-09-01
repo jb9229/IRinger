@@ -6,7 +6,7 @@
     "version": "0.0.0",
     "privacy": "public",
     "orientation": "portrait",
-    "icon": "./assets/images/splash.png",
+    "icon": "./assets/images/iRingerIcon_156.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
