@@ -30,7 +30,10 @@ const ContactText = styled.Text``;
 const VersionLabel = styled.Text``;
 const Version = styled.Text``;
 
-const AppSettingLayout:React.FC = (): React.ReactElement => {
+const AppSettingLayout:React.FC = (): React.ReactElement =>
+{
+  const releaseMode = Constants.manifest.slug?.split('_')[1] || 'unknown';
+
   return (
     <Container>
       <Contents>
@@ -44,7 +47,8 @@ const AppSettingLayout:React.FC = (): React.ReactElement => {
         </ContactWrap>
         <VersionWrap>
           <VersionLabel>Version: </VersionLabel>
-          <Version>{loadingStorybook ? `story_${Constants.manifest.version}` : Constants.manifest.version}</Version>
+          <Version>{loadingStorybook ? `${Constants.manifest.version}_story`
+            : `${Constants.manifest.version}_${releaseMode}`}</Version>
         </VersionWrap>
       </Footer>
     </Container>

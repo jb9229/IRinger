@@ -14,7 +14,7 @@ const SoildButton = styled(Button).attrs(() => ({
   shadow-offset: 0px 5px;
   shadow-opacity: 0.24;
   shadow-radius: 16.0px;
-  elevation: 10;
+  elevation: 4;
 `;
 
 export default SoildButton;
