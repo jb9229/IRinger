@@ -1,10 +1,9 @@
-import * as Sentry from 'sentry-expo';
-
 import { dark, light } from 'src/theme';
 
 import Navigation from './navigation';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Sentry from 'src/utils/Sentry';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from '@dooboo-ui/theme';
 import useCachedResources from './hooks/useCachedResources';

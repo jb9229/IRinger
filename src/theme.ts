@@ -5,6 +5,8 @@ export interface DefaultStyledProps {
 }
 
 export const colors = {
+  tomato: 'rgb(229,33,33)',
+
   whiteGray: '#f7f6f3',
   dusk: 'rgb(65,77,107)',
   dodgerBlue: 'rgb(58,139,255)',
@@ -28,6 +30,7 @@ export const colors = {
 export const light = {
   primary: colors.dodgerBlue,
   disabled: colors.mediumGray,
+  error: colors.tomato,
 
   background: colors.lightBackground,
   backgroundDark: colors.dodgerBlue,
@@ -57,6 +60,7 @@ export type Theme = typeof light;
 export const dark = {
   primary: '#1F2324',
   disabled: colors.mediumGray,
+  error: colors.tomato,
 
   background: colors.darkBackground,
   backgroundDark: '#262A2C',

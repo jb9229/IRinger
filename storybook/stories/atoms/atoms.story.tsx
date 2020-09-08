@@ -4,6 +4,7 @@ import styled, { DefaultTheme } from 'styled-components/native';
 
 import { Button } from 'dooboo-ui';
 import CenterView from '../CenterView';
+import DestructiveButton from 'src/components/atoms/Button/Destructive';
 import GhostButton from 'src/components/atoms/Button/Ghost';
 import SoildButton from 'src/components/atoms/Button/Solid';
 import { storiesOf } from '@storybook/react-native';
@@ -39,6 +40,7 @@ storiesOf('Atoms', module)
       <SubTitle>Outline Button</SubTitle>
       <SubTitle>Text Button</SubTitle>
       <SubTitle>Destructive Button</SubTitle>
+      <DestructiveButton text="Ghost button" />
       <SubTitle>Icon Button</SubTitle>
       <SubTitle>Icon with Lable Button</SubTitle>
     </Container>
