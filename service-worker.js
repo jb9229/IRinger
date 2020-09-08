@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/dev-sstk/IRinger/precache-manifest.a1444840b525881f9fa55ffa178682dc.js"
+  "/IRinger/precache-manifest.fd55ffe0a91fb9122fe4f4b50afa696f.js"
 );
 
 workbox.skipWaiting();
@@ -29,7 +29,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/dev-sstk/IRinger/index.html", {
+workbox.routing.registerNavigationRoute("/IRinger/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
