@@ -11,7 +11,7 @@ const Container = styled.View``;
 storiesOf('Screen', module)
   .addDecorator((getStory: () => React.ReactElement) => <CenterView>{getStory()}</CenterView>)
   .add('RingerList', () => (
-    <RingerListSBProvider>
+    <RingerListSBProvider navigation={undefined}>
       <RingerListLayout />
     </RingerListSBProvider>
   ));

@@ -23,6 +23,10 @@ const RingerListSBProvider:React.FC<Props> = (props): React.ReactElement =>
   };
 
   const actions = {
+    onClickAddRinger()
+    {
+      console.log('onClickAddRinger');
+    }
   };
 
   return (

@@ -2,11 +2,12 @@ import * as React from 'react';
 
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { RootStackParamList } from '../types';
+import { RootStackParamList } from 'src/navigation/types';
 import { StackScreenProps } from '@react-navigation/stack';
 
 export default function NotFoundScreen({ navigation }: StackScreenProps<RootStackParamList, 'NotFound'>):
-React.ReactElement {
+React.ReactElement
+{
   return (
     <View style={styles.container}>
       <Text style={styles.title}>This screen doesn't exist.</Text>
@@ -23,18 +24,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    padding: 20
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   link: {
     marginTop: 15,
-    paddingVertical: 15,
+    paddingVertical: 15
   },
   linkText: {
     fontSize: 14,
-    color: '#2e78b7',
-  },
+    color: '#2e78b7'
+  }
 });

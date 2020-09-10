@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 
 import { EditText, EditTextInputType } from 'dooboo-ui';
 
@@ -25,7 +25,8 @@ interface Props {
   onClickGuest: () => void;
 }
 
-const SigninLayout:React.FC<Props> = (props): React.ReactElement => {
+const SigninLayout:React.FC<Props> = (props): React.ReactElement =>
+{
   return (
     <Container>
       <EditText
@@ -33,34 +34,34 @@ const SigninLayout:React.FC<Props> = (props): React.ReactElement => {
         errorTestID="error-email"
         type={EditTextInputType.ROW}
         textStyle={{
-          color: 'black',
+          color: 'black'
         }}
         style={{ marginBottom: 20 }}
         isRow={true}
-        label={"ID"}
+        label={'ID'}
         placeholderTextColor={'gray'}
         placeholder="dev"
         value={undefined}
-        onChangeText={(text: string): void => {}}
+        onChangeText={(): void => undefined}
         errorText={undefined}
-        onSubmitEditing={() => {}}
+        onSubmitEditing={() => undefined}
       />
       <EditText
         testID="input-password"
         errorTestID="error-password"
         type={EditTextInputType.ROW}
         textStyle={{
-          color: 'black',
+          color: 'black'
         }}
         style={{ marginBottom: 20 }}
         isRow={true}
-        label={"PASSWORD"}
+        label={'PASSWORD'}
         placeholder="******"
         placeholderTextColor={'gray'}
         value={undefined}
-        onChangeText={(text: string): void => {}}
+        onChangeText={(text: string): void => undefined}
         errorText={undefined}
-        onSubmitEditing={() => {}}
+        onSubmitEditing={() => undefined}
         secureTextEntry={true}
       />
       <LoginButton text="로그인" isDisabled={true} onPress={() => props.onClickGuest()} />

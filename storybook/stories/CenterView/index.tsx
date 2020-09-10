@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { View } from 'react-native';
 import style from './style';
 
-export default function CenterView({ children }): React.ReactElement
+export default function CenterView({ children }: {children: React.ReactNode}): React.ReactElement
 {
   return <SafeAreaView style={{ flex: 1 }}><View style={style.main}>{children}</View></SafeAreaView>;
 }

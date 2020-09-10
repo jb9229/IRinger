@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { FlatList } from 'react-native-gesture-handler';
+import { RingerInjection } from 'src/container/ringer/types';
 import RingerListItem from '../organisms/RingerListItem';
 import styled from 'styled-components/native';
 import { useRingerListContext } from 'container/ringer/list/RingerListContext';
@@ -18,7 +19,8 @@ const RingerListLayout:React.FC = (): React.ReactElement =>
     <Container>
       <RingerList
         data={ringerInjectionList}
-        renderItem={({ item, index }) => <RingerListItem item={item} />}
+        renderItem={({ item, index }: {item: RingerInjection; index: number}): React.ReactElement =>
+          <RingerListItem key={`KEY_${index}`} item={item} />}
       />
     </Container>
   );

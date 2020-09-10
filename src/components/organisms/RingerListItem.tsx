@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { ReactNode } from 'react';
 import RingerBar from '../molecules/RingerBar';
 import { RingerInjection } from 'src/container/ringer/types';
 import styled from 'styled-components/native';
@@ -25,6 +26,7 @@ const RingerName = styled.Text``;
 const ItemText = styled.Text``;
 
 interface Props {
+  children?: ReactNode;
   item: RingerInjection;
 }
 const RingerListItem:React.FC<Props> = (props): React.ReactElement =>

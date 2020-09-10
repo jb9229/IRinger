@@ -10,6 +10,7 @@ interface Props {
 const RingerListProvider:React.FC<Props> = (props): React.ReactElement =>
 {
   const states = {
+    ringerInjectionList: []
   };
 
   const actions = {
