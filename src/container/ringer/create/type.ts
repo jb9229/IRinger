@@ -1,37 +1,59 @@
+import * as yup from 'yup';
+
+import { getString } from 'src/STRINGS';
+
 export interface Ringer
 {
-  userId: string | undefined;
+  // userId: string | undefined;
+  // hospitalName: Hospital;
   sn: string;
-  ringerName: string;
-  hospital: string;
+  name: string;
 }
 
-export class RingerCreateDto implements Ringer
+export class RingerCreateDto
 {
   constructor()
   {
     this.sn = '';
-    this.ringerName = '';
-    this.hospital = '';
+    this.name = '';
+    this.hospitalId = '';
   }
 
   userId: string | undefined;
+  hospitalId: string;
   sn: string;
-  ringerName: string;
-  hospital: string;
+  name: string;
 }
 
-export class RingerCreateErrorData implements Ringer
+export class RingerCreateErrorData
 {
   constructor()
   {
     this.sn = '';
-    this.ringerName = '';
-    this.hospital = '';
+    this.name = '';
+    this.hospitalId = '';
   }
 
   userId: string | undefined;
+  hospitalId: string;
   sn: string;
-  ringerName: string;
-  hospital: string;
+  name: string;
 }
+
+/**
+ * Validation Scheme
+ */
+export interface ValidationResult {
+  result : boolean,
+  error: RingerCreateErrorData;
+}
+
+export const RingerCreateValidScheme = yup.object({
+  name: yup.string().required(`[name]${getString('validation.required')}`),
+  sn: yup.string()
+    .required(`[sn]${getString('validation.required')}`),
+  userId: yup.string()
+    .required(`[userId]${getString('validation.required')}`),
+  hospitalId: yup.string()
+    .required(`[hospitalId]${getString('validation.required')}`)
+});

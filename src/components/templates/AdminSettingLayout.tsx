@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import RingerListItem from '../organisms/RingerListItem';
 import SoildButton from '../atoms/Button/Solid';
 import styled from 'styled-components/native';
 import { useAdminSettingContext } from 'src/container/admin/AdminSettingContext';
@@ -15,13 +16,16 @@ const Footer = styled.View`
   flex-direction: row;
 `;
 
+const Ringer = styled.Text``;
+
 const AdminSettingLayout:React.FC = (): React.ReactElement =>
 {
-  const { onClickAddRinger } = useAdminSettingContext();
+  const { ringerList, onClickAddRinger } = useAdminSettingContext();
 
   return (
     <Container>
       <Contents>
+        {ringerList.map((ringer, index) => <RingerListItem key={`KEY_${index}`} item={ringer} />)}
         <SoildButton
           text="링거 추가"
           onPress={onClickAddRinger}

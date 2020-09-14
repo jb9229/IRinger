@@ -1,4 +1,7 @@
 {
+  "validation": {
+    "required": "필수 입력 값입니다"
+  },
   "button": {
     "add": "추가"
   }

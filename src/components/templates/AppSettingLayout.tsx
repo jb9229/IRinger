@@ -37,6 +37,7 @@ const AppSettingLayout:React.FC = (): React.ReactElement =>
   return (
     <Container>
       <Contents>
+        <ContactText>노바병원</ContactText>
         <ContactText>가입하기</ContactText>
       </Contents>
       <Footer>

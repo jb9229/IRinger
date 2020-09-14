@@ -1,4 +1,7 @@
 {
+  "validation": {
+    "required": "VALIDATION_REQUIRED"
+  },
   "button": {
     "add": "Add"
   }

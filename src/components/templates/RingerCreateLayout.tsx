@@ -29,8 +29,8 @@ const RingerCreateLayout:React.FC = (): React.ReactElement =>
   {
     if (!createDto.userId) { if (isValidSubmit) { setValidSubmit(false) } return false }
     if (!createDto.sn) { if (isValidSubmit) { setValidSubmit(false) } return false }
-    if (!createDto.ringerName) { if (isValidSubmit) { setValidSubmit(false) } return false }
-    if (!createDto.hospital) { if (isValidSubmit) { setValidSubmit(false) } return false }
+    if (!createDto.name) { if (isValidSubmit) { setValidSubmit(false) } return false }
+    if (!createDto.hospitalId) { if (isValidSubmit) { setValidSubmit(false) } return false }
 
     if (!isValidSubmit) { setValidSubmit(true) }
     return true;
@@ -59,16 +59,16 @@ const RingerCreateLayout:React.FC = (): React.ReactElement =>
             errorText={errorData.sn}
           />
           <FormEditText
-            onChangeText={(text) => { createDto.ringerName = text; validSubmit() }}
+            onChangeText={(text) => { createDto.name = text; validSubmit() }}
             label="장치명"
             placeholder="장치명을 입력하세요"
-            errorText={errorData.ringerName}
+            errorText={errorData.name}
           />
           <FormEditText
-            onChangeText={(text) => { createDto.hospital = text; validSubmit() }}
+            onChangeText={(text) => { createDto.hospitalId = text; validSubmit() }}
             label="병원"
             placeholder="병원명을 입려하세요"
-            errorText={errorData.hospital}
+            errorText={errorData.hospitalId}
           />
         </StyledKeyboardAwareScrollView>
       </Container>

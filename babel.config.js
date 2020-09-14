@@ -23,6 +23,7 @@ module.exports = function(api)
             assets: './assets',
             src: './src',
             hooks: './src/hooks',
+            apollo: './src/apollo',
             container: './src/container',
             contexts: './src/contexts',
             atoms: './src/components/atoms',

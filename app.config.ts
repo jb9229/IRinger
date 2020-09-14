@@ -8,7 +8,7 @@ export default ({ config }): any =>
   return {
     ...config,
     version: process.env.MY_CUSTOM_PROJECT_VERSION || '0.0.0',
-    slug: loadingStorybook ? 'iringer_story' : config.slug,
+    slug: loadingStorybook ? 'iringer_story' : `${config.slug}_${process.env.BUILD_TYPE}`,
     icon: loadingStorybook ? './assets/images/storyIcon_32.png' : config.icon,
     hooks: {
       ...config.hooks,
