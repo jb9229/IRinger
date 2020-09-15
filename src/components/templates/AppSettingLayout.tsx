@@ -1,9 +1,14 @@
 import * as Linking from 'expo-linking';
 import * as React from 'react';
 
+import { Clipboard, TouchableOpacity } from 'react-native';
+
 import Constants from 'expo-constants';
-import { loadingStorybook } from '../../../App';
+import { SEND_NOTIFICATION } from 'src/apollo/query';
+import { notificationTokenState } from 'src/container/signin/store';
 import styled from 'styled-components/native';
+import { useLazyQuery } from '@apollo/client';
+import { useRecoilValue } from 'recoil';
 
 const Container = styled.View`
   flex: 1;
@@ -33,12 +38,19 @@ const Version = styled.Text``;
 const AppSettingLayout:React.FC = (): React.ReactElement =>
 {
   const releaseMode = Constants.manifest.slug?.split('_')[1] || 'unknown';
+  const notificationToken = useRecoilValue(notificationTokenState);
+  const [sendNotificationReq, sendNotificationRsp] = useLazyQuery(SEND_NOTIFICATION, {
+    fetchPolicy: 'network-only'
+  });
 
   return (
     <Container>
       <Contents>
-        <ContactText>노바병원</ContactText>
-        <ContactText>가입하기</ContactText>
+        <ContactText>노바 병원</ContactText>
+        <ContactText>가입 하기</ContactText>
+        <TouchableOpacity onPress={() => sendNotificationReq({ variables: { nTokenList: [notificationToken] } })}>
+          <ContactText selectable={true}>{notificationToken}</ContactText>
+        </TouchableOpacity>
       </Contents>
       <Footer>
         <ContactWrap>
@@ -48,8 +60,7 @@ const AppSettingLayout:React.FC = (): React.ReactElement =>
         </ContactWrap>
         <VersionWrap>
           <VersionLabel>Version: </VersionLabel>
-          <Version>{loadingStorybook ? `${Constants.manifest.version}_story`
-            : `${Constants.manifest.version}_${releaseMode}`}</Version>
+          <Version>{`${Constants.manifest.version}_${releaseMode}`}</Version>
         </VersionWrap>
       </Footer>
     </Container>

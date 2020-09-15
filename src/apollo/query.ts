@@ -9,3 +9,9 @@ export const RINGER_LIST = gql`
     }
   }
 `;
+
+export const SEND_NOTIFICATION = gql`
+  query SendNotification($nTokenList: [String]){
+    sendNotification(nTokenList: $nTokenList)
+  }
+`;
