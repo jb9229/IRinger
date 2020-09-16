@@ -9,6 +9,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import NotFoundScreen from '../../screens/NotFoundScreen';
 import RingerCreateScreen from 'container/ringer/create';
 import { RootStackParamList } from './types';
+import SelectRingerListModal from 'src/components/templates/SelectRingerListModal';
 import SignInScreen from 'src/container/signin';
 import { createStackNavigator } from '@react-navigation/stack';
 import { notificationTokenState } from 'src/container/signin/store';
@@ -75,6 +76,8 @@ function RootNavigator(): React.ReactElement
       {!token && (
         <Stack.Screen name="SignIn" component={SignInScreen} />
       )}
+      <Stack.Screen name="RingerListModal" component={SelectRingerListModal}
+        options={{ cardStyle: { backgroundColor: 'transparent' } }}/>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="RingerCreate" component={RingerCreateScreen} />

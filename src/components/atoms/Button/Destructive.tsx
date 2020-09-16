@@ -9,7 +9,7 @@ const DestructiveButton = styled(Button).attrs((props) => ({
   }
 }))`
   background-color: white;
-  border-width: 2;
+  border-width: 2px;
   border-color: ${(props) => props.theme.error};
 `;
 

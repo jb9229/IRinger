@@ -6,6 +6,7 @@ export const RINGER_LIST = gql`
       sn
       name
       ivTotalAmount
+      status
     }
   }
 `;

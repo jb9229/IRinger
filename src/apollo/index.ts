@@ -1,18 +1,20 @@
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, from, split } from '@apollo/client';
 
+import Constants from 'expo-constants';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 
-const NODE_SERVER_URL_LOCAL = 'http://localhost:8080/graphql';
+const NODE_SERVER_URL_LOCAL = 'http://localhost:4500/graphql';
 const NODE_SERVER_WEBSOCKET_URL_LOCAL = 'ws://localhost:4500/graphql';
 const NODE_SERVER_URL_ALPHA = 'https://iringer-server.azurewebsites.net/graphql';
 const NODE_SERVER_WEBSOCKET_URL_ALPHA = 'ws://iringer-server.azurewebsites.net/graphql';
-
-const NODE_SERVER_URL = process.env.BUILD_TYPE === 'dev' ? NODE_SERVER_URL_LOCAL : NODE_SERVER_URL_ALPHA;
+const buildType = Constants.manifest.extra.buildType;
+const NODE_SERVER_URL = buildType === 'dev' ? NODE_SERVER_URL_LOCAL : NODE_SERVER_URL_ALPHA;
 const NODE_SERVER_WEBSOCKET_URL =
-  process.env.BUILD_TYPE === 'dev' ? NODE_SERVER_WEBSOCKET_URL_LOCAL : NODE_SERVER_WEBSOCKET_URL_ALPHA;
+buildType === 'dev' ? NODE_SERVER_WEBSOCKET_URL_LOCAL : NODE_SERVER_WEBSOCKET_URL_ALPHA;
 
-console.log('>>> NODE_SERVER_URL: ', NODE_SERVER_URL);
+console.log('=== manifest.buildType: ', Constants.manifest.extra.buildType);
+
 const httpLink = new HttpLink({
   uri: NODE_SERVER_URL
 });

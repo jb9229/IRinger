@@ -20,12 +20,11 @@ const Ringer = styled.Text``;
 
 const AdminSettingLayout:React.FC = (): React.ReactElement =>
 {
-  const { ringerList, onClickAddRinger } = useAdminSettingContext();
+  const { onClickAddRinger } = useAdminSettingContext();
 
   return (
     <Container>
       <Contents>
-        {ringerList.map((ringer, index) => <RingerListItem key={`KEY_${index}`} item={ringer} />)}
         <SoildButton
           text="링거 추가"
           onPress={onClickAddRinger}

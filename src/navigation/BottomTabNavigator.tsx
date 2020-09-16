@@ -26,10 +26,10 @@ export default function BottomTabNavigator(): React.ReactElement
 
   return (
     <BottomTab.Navigator
-      initialRouteName="링거 모니터링"
+      initialRouteName="모니터링"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="링거 모니터링"
+        name="모니터링"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <Image source={require('assets/images/iRingerIcon.png')} />
@@ -71,7 +71,7 @@ function TabOneNavigator(): React.ReactElement
       <RingerListStack.Screen
         name="RingerListScreen"
         component={RingerListScreen}
-        options={{ headerTitle: 'Ringer List' }}
+        options={{ headerTitle: '모니터링 리스트' }}
       />
     </RingerListStack.Navigator>
   );

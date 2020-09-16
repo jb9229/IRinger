@@ -30,6 +30,10 @@ console.log('>>> data?.monitoringInjection: ', data?.monitoringInjection);
     onClickAddRinger()
     {
       props.navigation.navigate('RingerCreate');
+    },
+    onAddMonitoring()
+    {
+      props.navigation.navigate('RingerListModal');
     }
   };
 

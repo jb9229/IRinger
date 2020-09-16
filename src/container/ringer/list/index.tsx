@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import RingerListLayout from 'templates/RingerListLayout';
-import RingerListProvider from './RingerListProvider';
+import MonitoringListLayout from 'src/components/templates/MonitoringListLayout';
+import MonitoringListProvider from './MonitoringListProvider';
 import { RootStackParamList } from 'src/navigation/types';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -12,9 +12,9 @@ interface Props
 const RingetListContainer:React.FC<Props> = (props): React.ReactElement =>
 {
   return (
-    <RingerListProvider navigation={props.navigation}>
-      <RingerListLayout />
-    </RingerListProvider>
+    <MonitoringListProvider navigation={props.navigation}>
+      <MonitoringListLayout />
+    </MonitoringListProvider>
   );
 };
 

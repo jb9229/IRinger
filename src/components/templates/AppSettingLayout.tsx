@@ -1,10 +1,9 @@
 import * as Linking from 'expo-linking';
 import * as React from 'react';
 
-import { Clipboard, TouchableOpacity } from 'react-native';
-
 import Constants from 'expo-constants';
 import { SEND_NOTIFICATION } from 'src/apollo/query';
+import { TouchableOpacity } from 'react-native';
 import { notificationTokenState } from 'src/container/signin/store';
 import styled from 'styled-components/native';
 import { useLazyQuery } from '@apollo/client';

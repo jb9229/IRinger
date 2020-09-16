@@ -3,10 +3,11 @@ export type RootStackParamList = {
   NotFound: undefined;
   SignIn: undefined;
   RingerCreate: undefined;
+  RingerListModal: undefined;
 };
 
 export type BottomTabParamList = {
-  '링거 모니터링': undefined;
+  '모니터링': undefined;
   내정보: undefined;
   관리자: undefined;
 };

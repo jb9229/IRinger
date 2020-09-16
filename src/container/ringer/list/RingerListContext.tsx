@@ -6,6 +6,7 @@ export interface Context
 {
   ringerInjectionList: Array<RingerInjection>
   onClickAddRinger: () => void;
+  onAddMonitoring: () => void;
 }
 
 const [useCtx, Provider] = createCtx<Context>();

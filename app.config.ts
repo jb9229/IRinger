@@ -26,7 +26,7 @@ export default ({ config }): any =>
     },
     // All values in extra will be passed to your app.
     extra: {
-      fact: 'kittens are cool'
+      buildType: process.env.BUILD_TYPE
     }
   };
 };
