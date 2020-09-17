@@ -6,14 +6,14 @@ import styled from 'styled-components/native';
 const Container = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-around;
-  border-bottom-width: 1;
+  border-bottom-width: 1px;
   padding: 15px;
 `;
 const RingerSN = styled.Text`
-  width: 100;
+  width: 100px;
 `;
 const RingerName = styled.Text`
-  width: 100;
+  width: 100px;
 `;
 
 interface Props

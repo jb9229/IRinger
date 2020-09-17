@@ -10,7 +10,7 @@ const Container = styled.View`
   justify-content: space-between;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-width: 1;
+  border-width: 1px;
 `;
 const LeftWrap = styled.View`
   padding-horizontal: 10px;
@@ -31,7 +31,8 @@ interface Props {
 }
 const RingerMonitoringListItem:React.FC<Props> = (props): React.ReactElement =>
 {
-  const ivAmountPercent = (props.item.ivCurrentAmount / props.item.ivTotalAmount) * 100;
+  const ivAmountPercent =
+    props.item.ivTotalAmount > 0 ? (props.item.ivCurrentAmount / props.item.ivTotalAmount) * 100 : 0;
 
   return (
     <Container>

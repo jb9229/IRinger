@@ -7,16 +7,16 @@ interface StyledProps {
 }
 
 const Container = styled.View`
-  width: 50;
-  height: 50;
-  border-width: 1;
+  width: 50px;
+  height: 50px;
+  border-width: 1px;
 `;
 const BarWrap = styled.View`
   flex: 1;
   justify-content: flex-end;
 `;
 const Bar = styled.View<StyledProps>`
-  height: ${(props) => 50 * (props.percent / 100)};
+  height: ${(props) => 50 * (props.percent / 100)}px;
   background-color: ${(props) => props.theme.primary};
 `;
 

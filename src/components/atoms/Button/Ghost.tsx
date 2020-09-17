@@ -9,8 +9,8 @@ const GhostButton = styled(Button).attrs(() => ({
   }
 }))`
   border-color: #109CF1;
-  border-width: 2;
-  border-radius: 4;
+  border-width: 2px;
+  border-radius: 4px;
 `;
 
 export default GhostButton;

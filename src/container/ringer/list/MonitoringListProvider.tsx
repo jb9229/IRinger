@@ -5,6 +5,8 @@ import { Provider } from './RingerListContext';
 import { RingerInjection } from '../types';
 import { RootStackParamList } from 'src/navigation/types';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { monitoringListState } from '../monitoring/store';
+import { useRecoilState } from 'recoil';
 import { useSubscription } from '@apollo/client';
 
 interface Props {
@@ -12,18 +14,35 @@ interface Props {
 }
 const RingerListProvider:React.FC<Props> = (props): React.ReactElement =>
 {
-  const { data, loading } = useSubscription(MI_SUBSCRIPTION);
+  const { data, loading } = useSubscription(MI_SUBSCRIPTION, {
+    onSubscriptionData: () =>
+    {
+      console.log('>>> data.monitoringInjection: ', data?.monitoringInjection);
+      // console.log(data);
+      if (data?.monitoringInjection)
+      {
+        const mi = data.monitoringInjection;
 
-  const ringerInjectionList = new Array<RingerInjection>();
+        const newList = monitoringList.map((monitoring) =>
+        {
+          console.log('>>> mi.sn: ', mi.sn);
+          console.log('>>> monitoring.lingerSN: ', monitoring.lingerSN);
+          if (mi.sn === monitoring.lingerSN)
+          {
+            return new RingerInjection(mi.sn, monitoring.lingerName, mi.gtt, 100, mi.battery, 100, 100, mi.restAmong);
+          }
 
-  if (data?.monitoringInjection)
-  {
-    ringerInjectionList.push(
-      new RingerInjection('ringer001', data.monitoringInjection.gtt, 100, data.monitoringInjection.battery, 1000, 100, 13));
-  }
-console.log('>>> data?.monitoringInjection: ', data?.monitoringInjection);
+          return monitoring;
+        });
+
+        console.log('>>> newList: ', newList);
+        setMonitoringList([...newList]);
+      }
+    }
+  });
+  const [monitoringList, setMonitoringList] = useRecoilState(monitoringListState);
+
   const states = {
-    ringerInjectionList: ringerInjectionList
   };
 
   const actions = {

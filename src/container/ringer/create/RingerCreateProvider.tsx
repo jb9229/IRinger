@@ -4,14 +4,14 @@ import { RingerCreateDto, RingerCreateErrorData, ValidationResult } from './type
 
 import { CREATE_RINGER } from 'src/apollo/mutation';
 import { Provider } from './RingerCreateContext';
-import { RootStackParamList } from 'src/navigation/types';
+import { RingerListParamList } from 'src/navigation/types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { noticeUserError } from 'src/utils/ErrorReport';
 import { useMutation } from '@apollo/client';
 import { validateCreateRinger } from './action';
 
 interface Props {
-  navigation: StackNavigationProp<RootStackParamList, 'RingerCreate'>
+  navigation: StackNavigationProp<RingerListParamList, 'RingerListScreen'>
 }
 const RingerCreateProvider:React.FC<Props> = (props): React.ReactElement =>
 {
@@ -22,7 +22,7 @@ const RingerCreateProvider:React.FC<Props> = (props): React.ReactElement =>
     {
       if (data.createRinger)
       {
-        props.navigation.navigate('Root');
+        props.navigation.navigate('RingerListScreen');
       }
     }
   });

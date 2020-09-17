@@ -2,12 +2,20 @@ import * as yup from 'yup';
 
 import { getString } from 'src/STRINGS';
 
+/**
+ * ENUM
+ */
+export enum RingerStatus {
+  RESET = 'RESET', PROGRESS = 'PROGRESS'
+}
+
 export interface Ringer
 {
   // userId: string | undefined;
   // hospitalName: Hospital;
   sn: string;
   name: string;
+  status: RingerStatus;
 }
 
 export class RingerCreateDto

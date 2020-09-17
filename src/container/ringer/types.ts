@@ -1,8 +1,9 @@
 export class RingerInjection
 {
-  constructor(lingerName: string, gtt: number, ccPerHr: number, battery: number, restTime: number
+  constructor(lingerSN: string, lingerName: string, gtt: number, ccPerHr: number, battery: number, restTime: number
     , ivTotalAmount: number, ivCurrentAmount: number)
   {
+    this.lingerSN = lingerSN;
     this.lingerName = lingerName;
     this.gtt = gtt;
     this.ccPerHr = ccPerHr;
@@ -12,6 +13,7 @@ export class RingerInjection
     this.ivCurrentAmount = ivCurrentAmount;
   }
 
+  lingerSN: string;
   lingerName: string;
   ivTotalAmount: number;
   ivCurrentAmount: number;

@@ -1,7 +1,8 @@
 import * as React from 'react';
 
-import { Animated, ScrollView } from 'react-native';
 import styled, { DefaultTheme } from 'styled-components/native';
+
+import { ScrollView } from 'react-native';
 
 interface StyledProps{
   theme: DefaultTheme;
@@ -36,12 +37,6 @@ export const NaviTitle = styled.Text`
   color: black;
   font-size: 21px;
 `;
-const NaveGobackTO = styled.TouchableOpacity`
-  width: 30px;
-`;
-const NaviImage = styled.Image`
-  
-`;
 export const RightActionTO = styled.TouchableOpacity`
 `;
 export const HeadActionButtonTO2 = styled.TouchableOpacity`
@@ -56,57 +51,21 @@ export enum NaviHeaderIconType {
 }
 
 interface Props {
-  title?: string;
   rightActionText: string;
   iconType?: NaviHeaderIconType;
   scrollViewRef?: React.RefObject<ScrollView>;
   isScrolling?: boolean;
-  onClickNavi: () => void;
   onClickRightAction?: () => void;
 }
 
-const NaviHeader: React.FC<Props> = (props) =>
+const ModalHeader:React.FC<Props> = (props): React.ReactElement =>
 {
-  const headerShadowOpacity = React.useRef(new Animated.Value(0)).current;
-
-  React.useEffect(() =>
-  {
-    const toValue = props.isScrolling ? 1 : 0;
-    Animated.timing(
-      headerShadowOpacity,
-      {
-        useNativeDriver: true,
-        toValue,
-        duration: 300
-      }
-    ).start();
-  }, [props.isScrolling]);
-
   return (
-    <HeaderView
-      as={Animated.View}
-      style={{
-        shadowOpacity: headerShadowOpacity.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, 0.2]
-        }),
-        elevation: headerShadowOpacity.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, 5]
-        })
-      }}
-    >
+    <HeaderView>
       <LeftContent>
-        <NaveGobackTO
-          onPress={props.onClickNavi}
-          hitSlop={{ left: 10, right: 10, top: 5, bottom: 5 }}
-        >
-          <NaviImage source={require('assets/icons/Back/back.png')} />
-        </NaveGobackTO>
       </LeftContent>
 
       <CenterContent>
-        {!!props.title && (<NaviTitle numberOfLines={1}>{props.title}</NaviTitle>)}
       </CenterContent>
 
       <RightContent>
@@ -124,4 +83,4 @@ const NaviHeader: React.FC<Props> = (props) =>
   );
 };
 
-export default NaviHeader;
+export default ModalHeader;

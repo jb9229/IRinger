@@ -1,7 +1,9 @@
 import * as React from 'react';
 
 import { Modal } from 'react-native';
+import ModalHeader from '../molecules/ModalHeader';
 import { RINGER_LIST } from 'src/apollo/query';
+import { Ringer } from 'src/container/ringer/create/type';
 import RingerListItem from '../organisms/RingerListItem';
 import styled from 'styled-components/native';
 import { useQuery } from '@apollo/client';
@@ -19,6 +21,8 @@ const Contents = styled.View`
   width: 80%;
   height: 80%;
 `;
+const StyledScrollView = styled.ScrollView``;
+const Notice = styled.Text``;
 
 interface Props {
   visible: boolean;
@@ -34,6 +38,10 @@ const SelectRingerListModal:React.FC<Props> = (props): React.ReactElement =>
   React.useEffect(() =>
   {
     setVisible(props.visible);
+    if (props.visible)
+    {
+      ringersRsp.refetch();
+    }
   }, [props.visible]);
 
   return (
@@ -44,9 +52,18 @@ const SelectRingerListModal:React.FC<Props> = (props): React.ReactElement =>
     >
       <Container>
         <Contents>
-          {ringerList.map((ringer, index) =>
-            <RingerListItem key={`KEY_${index}`} item={ringer} onPress={() =>
-            { props.onSelectRinger(ringer); props.onClose() }} />)}
+          <ModalHeader rightActionText="닫기" onClickRightAction={() => props.onClose()} />
+          <Notice>모니터링중인 링거는 뺄 예정 입니다</Notice>
+          <StyledScrollView>
+            {ringerList.map((ringer: Ringer, index: number) =>
+              <RingerListItem key={`KEY_${index}`} item={ringer}
+                onPress={() =>
+                {
+                  props.onSelectRinger(ringer);
+                  props.onClose();
+                }}
+              />)}
+          </StyledScrollView>
         </Contents>
       </Container>
     </Modal>

@@ -4,8 +4,8 @@ import Constants from 'expo-constants';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 
-const NODE_SERVER_URL_LOCAL = 'http://localhost:4500/graphql';
-const NODE_SERVER_WEBSOCKET_URL_LOCAL = 'ws://localhost:4500/graphql';
+const NODE_SERVER_URL_LOCAL = 'http://192.168.0.11:4500/graphql';
+const NODE_SERVER_WEBSOCKET_URL_LOCAL = 'ws://192.168.0.11:4500/graphql';
 const NODE_SERVER_URL_ALPHA = 'https://iringer-server.azurewebsites.net/graphql';
 const NODE_SERVER_WEBSOCKET_URL_ALPHA = 'ws://iringer-server.azurewebsites.net/graphql';
 const buildType = Constants.manifest.extra.buildType;
@@ -112,5 +112,5 @@ const consoleLink = new ApolloLink((operation, forward) =>
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(
   ),
-  link: from([consoleLink, splitLink])
+  link: splitLink
 });
