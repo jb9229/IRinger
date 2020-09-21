@@ -1,5 +1,6 @@
 import { dark, light } from 'src/theme';
 
+import ActIndicator from './components/molecules/ActIndicator';
 import { ApolloProvider } from '@apollo/client';
 import Navigation from './navigation';
 import React from 'react';
@@ -9,6 +10,7 @@ import Sentry from 'src/utils/Sentry';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from '@dooboo-ui/theme';
 import { apolloClient } from 'apollo/index';
+import { getString } from './STRINGS';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 
@@ -20,11 +22,13 @@ Sentry.init({
 
 export default function App(): React.ReactElement | null
 {
-  const isLoadingComplete = useCachedResources();
+  const [isResourceLoadingComplete, isCheckUpdateComplete] = useCachedResources();
   const colorScheme = useColorScheme();
 
-  if (!isLoadingComplete)
+  if (!isResourceLoadingComplete || !isCheckUpdateComplete)
   {
+    if (!isResourceLoadingComplete) { return <ActIndicator msg={getString('loading.resouce')} /> }
+    if (!isCheckUpdateComplete) { return <ActIndicator msg={getString('loading.app_update')} /> }
     return null;
   }
   else

@@ -30,11 +30,6 @@ const StyledEditText = styled(EditText)`
   margin-top: 30px;
 `;
 
-const CancelButton = styled(Button)`
-`;
-const SubmitButton = styled(Button)`
-`;
-
 interface Props {
   visible: boolean;
   onComplate: () => void;

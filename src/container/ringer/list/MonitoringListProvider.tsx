@@ -17,7 +17,6 @@ const RingerListProvider:React.FC<Props> = (props): React.ReactElement =>
   const { data, loading } = useSubscription(MI_SUBSCRIPTION, {
     onSubscriptionData: () =>
     {
-      console.log('>>> data.monitoringInjection: ', data?.monitoringInjection);
       // console.log(data);
       if (data?.monitoringInjection)
       {
@@ -25,8 +24,6 @@ const RingerListProvider:React.FC<Props> = (props): React.ReactElement =>
 
         const newList = monitoringList.map((monitoring) =>
         {
-          console.log('>>> mi.sn: ', mi.sn);
-          console.log('>>> monitoring.lingerSN: ', monitoring.lingerSN);
           if (mi.sn === monitoring.lingerSN)
           {
             return new RingerInjection(mi.sn, monitoring.lingerName, mi.gtt, 100, mi.battery, 100, 100, mi.restAmong);
@@ -35,8 +32,7 @@ const RingerListProvider:React.FC<Props> = (props): React.ReactElement =>
           return monitoring;
         });
 
-        console.log('>>> newList: ', newList);
-        setMonitoringList([...newList]);
+        setMonitoringList(newList);
       }
     }
   });

@@ -1,6 +1,6 @@
-import { atom, atomFamily } from "recoil";
+import { atom, atomFamily } from 'recoil';
 
-import { RingerInjection } from "../types";
+import { RingerInjection } from '../types';
 
 export const monitoringListState = atom<Array<RingerInjection>>({
   key: 'monitoringListState', // unique ID (with respect to other atoms/selectors)

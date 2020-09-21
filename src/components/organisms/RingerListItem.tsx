@@ -9,11 +9,14 @@ const Container = styled.TouchableOpacity`
   border-bottom-width: 1px;
   padding: 15px;
 `;
+const RingerStatus = styled.Text`
+  width: 25%;
+`;
 const RingerSN = styled.Text`
-  width: 100px;
+  width: 35%;
 `;
 const RingerName = styled.Text`
-  width: 100px;
+  width: 40%;
 `;
 
 interface Props
@@ -25,7 +28,7 @@ const RingerListItem:React.FC<Props> = (props): React.ReactElement =>
 {
   return (
     <Container onPress={props.onPress}>
-      <RingerSN>{props.item.status}</RingerSN>
+      <RingerStatus>{props.item.status}</RingerStatus>
       <RingerSN>{props.item.sn}</RingerSN>
       <RingerName>{props.item.name}</RingerName>
     </Container>

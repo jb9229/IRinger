@@ -1,21 +1,31 @@
 import * as Font from 'expo-font';
 import * as React from 'react';
 import * as SplashScreen from 'expo-splash-screen';
+import * as Updates from 'expo-updates';
 
 import { Ionicons } from '@expo/vector-icons';
 
-export default function useCachedResources(): boolean
+export default function useCachedResources(): Array<boolean>
 {
-  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
+  const [isResourceLoadingComplete, setResourceLoadingComplete] = React.useState(false);
+  const [isCheckUpdateComplete, setCheckUpdateComplete] = React.useState(false);
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() =>
   {
-    loadResourcesAndDataAsync()
-      .then(() => setLoadingComplete(true));
+    checkUpdate()
+      .then(() =>
+      {
+        setCheckUpdateComplete(true);
+        loadResourcesAndDataAsync()
+          .then(() =>
+          {
+            setResourceLoadingComplete(true);
+          });
+      });
   }, []);
 
-  return isLoadingComplete;
+  return [isResourceLoadingComplete, isCheckUpdateComplete];
 }
 
 export async function loadResourcesAndDataAsync(): Promise<boolean>
@@ -41,5 +51,28 @@ export async function loadResourcesAndDataAsync(): Promise<boolean>
   finally
   {
     SplashScreen.hideAsync();
+  }
+}
+
+export async function checkUpdate(): Promise<boolean>
+{
+  try
+  {
+    const update = await Updates.checkForUpdateAsync();
+
+    if (update.isAvailable)
+    {
+      console.log('=== update available:', update);
+      await Updates.fetchUpdateAsync();
+      // ... notify user of update ...
+      await Updates.reloadAsync();
+      return true;
+    }
+
+    return true;
+  }
+  catch (e)
+  {
+    return true;
   }
 }

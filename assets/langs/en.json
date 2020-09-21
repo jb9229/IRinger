@@ -2,6 +2,11 @@
   "validation": {
     "required": "VALIDATION_REQUIRED"
   },
+  "loading": {
+    "default": "정보를 불러오는 중..",
+    "resouce": "앱 리소스 불러오는 중..",
+    "app_update": "앱 버전 업데이트 체크중.."
+  },
   "button": {
     "add": "Add"
   }

@@ -23,6 +23,26 @@ const Contents = styled.View`
 `;
 const StyledScrollView = styled.ScrollView``;
 const Notice = styled.Text``;
+const Header = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  padding-left: 15px;
+  padding-right: 15px;
+`;
+const HeaderText = styled.Text`
+  text-align: center;
+  font-size: 21px;
+  font-weight: bold;
+`;
+const StatusHeader = styled(HeaderText)`
+  width: 25%;
+`;
+const SNHeader = styled(HeaderText)`
+  width: 35%;
+`;
+const NameHeader = styled(HeaderText)`
+  width: 40%;
+`;
 
 interface Props {
   visible: boolean;
@@ -53,7 +73,12 @@ const SelectRingerListModal:React.FC<Props> = (props): React.ReactElement =>
       <Container>
         <Contents>
           <ModalHeader rightActionText="닫기" onClickRightAction={() => props.onClose()} />
-          <Notice>모니터링중인 링거는 뺄 예정 입니다</Notice>
+          <Header>
+            <StatusHeader>상태</StatusHeader>
+            <SNHeader>시리얼넘버</SNHeader>
+            <NameHeader>링거명</NameHeader>
+          </Header>
+          <Notice>(모니터링중인 링거는 뺄 예정 입니다)</Notice>
           <StyledScrollView>
             {ringerList.map((ringer: Ringer, index: number) =>
               <RingerListItem key={`KEY_${index}`} item={ringer}
