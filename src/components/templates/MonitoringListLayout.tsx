@@ -1,10 +1,10 @@
 import * as React from 'react';
 
+import { IVInfoCrtDto, RingerInjection } from 'src/container/ringer/types';
 import { Ringer, RingerStatus } from 'src/container/ringer/create/type';
 
 import { FlatList } from 'react-native-gesture-handler';
 import MonitoringSettingModal from './MonitoringSettingModal';
-import { RingerInjection } from 'src/container/ringer/types';
 import RingerMonitoringListItem from '../organisms/RingerMonitoringListItem';
 import SelectRingerListModal from './SelectRingerListModal';
 import SoildButton from '../atoms/Button/Solid';
@@ -45,7 +45,9 @@ const RingerListLayout:React.FC = (): React.ReactElement =>
           }
           else
           {
-            setMonitoringList([...monitoringList, new RingerInjection(ringer.sn, ringer.name, 0, 0, 0, 0, 0, 0)]);
+            setMonitoringList([...monitoringList,
+              new RingerInjection(ringer.sn, ringer.name, 0, 0, 0, 0, 0, 0,
+                new IVInfoCrtDto(ringer.ivTotalAmount, ringer.ivPeriod, ringer.ivSpeed))]);
             setRlModalVisible(false);
           }
         }}
@@ -53,10 +55,10 @@ const RingerListLayout:React.FC = (): React.ReactElement =>
       />
       <MonitoringSettingModal
         visible={rlSetModalVisible}
-        onComplate={() =>
+        onComplate={(dto: IVInfoCrtDto): void =>
         {
           settingRinger && setMonitoringList([...monitoringList,
-            new RingerInjection(settingRinger.sn, settingRinger.name, 0, 0, 0, 0, 0, 0)]);
+            new RingerInjection(settingRinger.sn, settingRinger.name, 0, 0, 0, 0, 0, 0, dto)]);
           setRlSetModalVisible(false);
         }}
         onClose={() => setRlSetModalVisible(false)}

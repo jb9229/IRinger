@@ -15,6 +15,9 @@ export interface Ringer
   // hospitalName: Hospital;
   sn: string;
   name: string;
+  ivTotalAmount: number;
+  ivSpeed: number;
+  ivPeriod: number;
   status: RingerStatus;
 }
 

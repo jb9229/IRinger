@@ -14,30 +14,6 @@ interface Props {
 }
 const RingerListProvider:React.FC<Props> = (props): React.ReactElement =>
 {
-  const { data, loading } = useSubscription(MI_SUBSCRIPTION, {
-    onSubscriptionData: () =>
-    {
-      // console.log(data);
-      if (data?.monitoringInjection)
-      {
-        const mi = data.monitoringInjection;
-
-        const newList = monitoringList.map((monitoring) =>
-        {
-          if (mi.sn === monitoring.lingerSN)
-          {
-            return new RingerInjection(mi.sn, monitoring.lingerName, mi.gtt, 100, mi.battery, 100, 100, mi.restAmong);
-          }
-
-          return monitoring;
-        });
-
-        setMonitoringList(newList);
-      }
-    }
-  });
-  const [monitoringList, setMonitoringList] = useRecoilState(monitoringListState);
-
   const states = {
   };
 

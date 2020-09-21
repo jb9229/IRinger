@@ -6,6 +6,8 @@ export const RINGER_LIST = gql`
       sn
       name
       ivTotalAmount
+      ivSpeed
+      ivPeriod
       status
     }
   }
