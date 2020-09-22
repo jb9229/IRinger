@@ -12,6 +12,6 @@ storiesOf('Screen', module)
   .addDecorator((getStory: () => React.ReactElement) => <CenterView>{getStory()}</CenterView>)
   .add('RingerList', () => (
     <RingerListSBProvider navigation={undefined}>
-      <MonitoringListLayout />
+      {/* <MonitoringListLayout /> */}
     </RingerListSBProvider>
   ));

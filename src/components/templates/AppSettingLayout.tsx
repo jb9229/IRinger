@@ -47,6 +47,7 @@ const AppSettingLayout:React.FC = (): React.ReactElement =>
       <Contents>
         <ContactText>노바 병원</ContactText>
         <ContactText>가입 하기</ContactText>
+        <ContactText>자주사용하는 수액 추가</ContactText>
         <TouchableOpacity onPress={() => sendNotificationReq({ variables: { nTokenList: [notificationToken] } })}>
           <ContactText selectable={true}>{notificationToken}</ContactText>
         </TouchableOpacity>

@@ -64,7 +64,7 @@ const SigninLayout:React.FC<Props> = (props): React.ReactElement =>
         onSubmitEditing={() => undefined}
         secureTextEntry={true}
       />
-      <LoginButton text="로그인" isDisabled={true} onPress={() => props.onClickGuest()} />
+      <LoginButton text="로그인" disabled={true} onPress={() => props.onClickGuest()} />
       <GuestButton text="둘러보기" onPress={() => props.onClickGuest()} />
     </Container>
   );

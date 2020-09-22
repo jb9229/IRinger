@@ -4,7 +4,9 @@ import { MI_SUBSCRIPTION } from 'src/apollo/subscription';
 import { ReactNode } from 'react';
 import RingerBar from '../molecules/RingerBar';
 import { RingerInjection } from 'src/container/ringer/types';
+import { notificationTokenState } from 'src/container/signin/store';
 import styled from 'styled-components/native';
+import { useRecoilValue } from 'recoil';
 import { useSubscription } from '@apollo/client';
 
 const Container = styled.View`
@@ -33,14 +35,22 @@ interface Props {
 }
 const RingerMonitoringListItem:React.FC<Props> = (props): React.ReactElement =>
 {
+  const notificationToken = useRecoilValue(notificationTokenState);
   const { data, loading } = useSubscription(MI_SUBSCRIPTION, {
     variables: {
       dto:
-      { sn: props.item.lingerSN, totalAmong: props.item.ivInfo.totalAmount, period: props.item.ivInfo.period }
+      {
+        sn: props.item.lingerSN,
+        totalAmong: props.item.ivInfo.totalAmount,
+        period: props.item.ivInfo.period,
+        speed: props.item.ivInfo.speed,
+        notificationId: notificationToken
+      }
     }
   });
 
   console.log('RingerMonitoringListItem monitoringInjection: ', data?.monitoringInjection);
+  console.log('RingerMonitoringListItem notificationToken: ', notificationToken);
   const ivAmountPercent =
     props.item.ivTotalAmount > 0 ? (props.item.ivCurrentAmount / props.item.ivTotalAmount) * 100 : 0;
 

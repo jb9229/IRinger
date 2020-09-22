@@ -1,6 +1,7 @@
 {
   "validation": {
-    "required": "필수 입력 값입니다"
+    "required": "필수 입력 값입니다",
+    "allowed_number": "유효하지 않은 숫자 값입니다"
   },
   "loading": {
     "default": "정보를 불러오는 중..",

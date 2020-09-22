@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import { Button, Modal } from 'react-native';
+import { IVInfoCrtDto, IVInfoError } from 'src/container/ringer/types';
 
 import { EditText } from 'dooboo-ui';
-import { IVInfoCrtDto } from 'src/container/ringer/types';
 import ModalHeader from '../molecules/ModalHeader';
+import { getString } from 'src/STRINGS';
 import { isNumeric } from 'src/utils/NumberUtils';
 import styled from 'styled-components/native';
 
@@ -41,11 +42,28 @@ const MonitoringSettingModal:React.FC<Props> = (props): React.ReactElement =>
 {
   const [visible, setVisible] = React.useState(props.visible);
   const [dto, setDto] = React.useState<IVInfoCrtDto>(new IVInfoCrtDto(0, 0, 0));
+  const [error, setError] = React.useState<IVInfoError>(new IVInfoError());
 
   React.useEffect(() =>
   {
     setVisible(props.visible);
   }, [props.visible]);
+
+  const validate = (): boolean =>
+  {
+    const newError = new IVInfoError();
+    let result = true;
+    dto.totalAmount = Number.parseInt(dto.totalAmountStr);
+    dto.period = Number.parseInt(dto.periodStr);
+    dto.speed = Number.parseInt(dto.speedStr);
+
+    if (!isNumeric(dto.totalAmount)) { newError.totalAmount = getString('validation.allowed_number'); result = false }
+    if (!isNumeric(dto.period)) { newError.period = getString('validation.allowed_number'); result = false }
+    if (!isNumeric(dto.speed)) { newError.speed = getString('validation.allowed_number'); result = false }
+
+    setError(newError);
+    return result;
+  };
 
   return (
     <Modal
@@ -58,17 +76,25 @@ const MonitoringSettingModal:React.FC<Props> = (props): React.ReactElement =>
           <ModalHeader rightActionText="닫기" onClickRightAction={() => props.onClose()} />
           <StyledEditText
             label="총 투여량"
-            onChangeText={(text) => { if (isNumeric(text)) { dto.totalAmount = Number.parseFloat(text) } }}
+            keyboardType="decimal-pad"
+            onChangeText={(text) => { dto.totalAmountStr = text }}
+            errorText={error.totalAmount}
           />
-          <StyledEditText label="투여 시간"
-            onChangeText={(text) => { if (isNumeric(text)) { dto.period = Number.parseFloat(text) } }}
+          <StyledEditText
+            label="투여 시간"
+            keyboardType="decimal-pad"
+            onChangeText={(text) => { dto.periodStr = text }}
+            errorText={error.period}
           />
-          <StyledEditText label="투여 속도"
-            onChangeText={(text) => { if (isNumeric(text)) { dto.speed = Number.parseFloat(text) } }}
+          <StyledEditText
+            label="투여 속도"
+            keyboardType="decimal-pad"
+            onChangeText={(text) => { dto.speedStr = text }}
+            errorText={error.speed}
           />
           <Footer>
             <Button title="취소" onPress={props.onClose} />
-            <Button title="제출" onPress={() => props.onComplate(dto)} />
+            <Button title="제출" onPress={() => { if (validate()) { props.onComplate(dto) } }} />
           </Footer>
         </Contents>
       </Container>

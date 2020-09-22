@@ -4,6 +4,7 @@ import { IVInfoCrtDto, RingerInjection } from 'src/container/ringer/types';
 import { Ringer, RingerStatus } from 'src/container/ringer/create/type';
 
 import { FlatList } from 'react-native-gesture-handler';
+import FloatButton from '../atoms/Button/FloatingButton';
 import MonitoringSettingModal from './MonitoringSettingModal';
 import RingerMonitoringListItem from '../organisms/RingerMonitoringListItem';
 import SelectRingerListModal from './SelectRingerListModal';
@@ -32,7 +33,7 @@ const RingerListLayout:React.FC = (): React.ReactElement =>
         renderItem={({ item, index }: {item: RingerInjection; index: number}): React.ReactElement =>
           <RingerMonitoringListItem key={`KEY_${index}`} item={item} />}
       />
-      <SoildButton text="모니터링 추가" onPress={() => setRlModalVisible(true)} />
+      <FloatButton text="+" onClick={() => setRlModalVisible(true)} />
       <SelectRingerListModal
         visible={rlModalVisible}
         onSelectRinger={(ringer: Ringer): void =>
@@ -57,6 +58,7 @@ const RingerListLayout:React.FC = (): React.ReactElement =>
         visible={rlSetModalVisible}
         onComplate={(dto: IVInfoCrtDto): void =>
         {
+          console.log('>>> dto: ', dto)
           settingRinger && setMonitoringList([...monitoringList,
             new RingerInjection(settingRinger.sn, settingRinger.name, 0, 0, 0, 0, 0, 0, dto)]);
           setRlSetModalVisible(false);

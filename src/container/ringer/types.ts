@@ -23,12 +23,13 @@ export class RingerInjection
   ccPerHr: number;
   battery: number;
   restTime: number;
-  ivInfo: IVInfo | undefined;
+  ivInfo: IVInfo;
 }
 
 export interface IVInfo {
   totalAmount: number;
   period: number;
+  speed: number;
 }
 
 export class IVInfoCrtDto implements IVInfo
@@ -38,9 +39,29 @@ export class IVInfoCrtDto implements IVInfo
     this.totalAmount = totalAmong;
     this.period = period;
     this.speed = speed;
+    this.totalAmountStr = '';
+    this.periodStr = '';
+    this.speedStr = '';
   }
 
   totalAmount: number;
   period: number;
   speed: number;
+  totalAmountStr: string;
+  periodStr: string;
+  speedStr: string;
+}
+
+export class IVInfoError
+{
+  constructor()
+  {
+    this.totalAmount = '';
+    this.period = '';
+    this.speed = '';
+  }
+
+  totalAmount: string;
+  period: string;
+  speed: string;
 }

@@ -10,6 +10,8 @@ const Container = styled.View`
   width: 50px;
   height: 50px;
   border-width: 1px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
 `;
 const BarWrap = styled.View`
   flex: 1;
