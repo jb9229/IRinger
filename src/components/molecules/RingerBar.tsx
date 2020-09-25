@@ -18,8 +18,10 @@ const BarWrap = styled.View`
   justify-content: flex-end;
 `;
 const Bar = styled.View<StyledProps>`
-  height: ${(props) => 50 * (props.percent / 100)}px;
+  height: ${(props) => 48 * (props.percent / 100)}px;
   background-color: ${(props) => props.theme.primary};
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
 `;
 
 interface Props {

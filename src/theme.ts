@@ -10,6 +10,7 @@ export const colors = {
   whiteGray: '#f7f6f3',
   dusk: 'rgb(65,77,107)',
   dodgerBlue: 'rgb(58,139,255)',
+  whiteBlue: 'rgb(230, 240, 255)',
   skyBlue: 'rgb(100,199,255)',
   mellowBlue: '#80b8f0',
   green: 'rgb(29,211,168)',
@@ -27,10 +28,34 @@ export const colors = {
   facebook: 'rgb(52,89,151)'
 };
 
+export const koFont = {
+  FontTalkTitle: 'nanum-pen',
+  FontTitle: 'nanumbarun-gothic-b',
+  FontMiddleTitle: 'nanumbarun-gothic',
+  FontBatang: 'nanumsquare-roundR',
+  FontButton: 'nanumbarun-gothic'
+};
+
+// export const enFont = {
+//   FontTalkTitle: 'nanum-pen',
+//   FontTitle: 'nanum-barun-gothic',
+//   FontMiddleTitle: 'nanum-barun-gothic',
+//   FontBatang: 'nanum-square-roundR',
+//   FontButton: 'nanum-barun-gothic'
+// };
+
 export const light = {
   primary: colors.dodgerBlue,
+  primaryLight: 'rgb(204, 224, 255)',
   disabled: colors.mediumGray,
   error: colors.tomato,
+
+  // BG
+  backgroundGray: 'rgb(245, 245, 245)',
+  backgroundListSeperator: 'rgb(128, 128, 128)',
+
+  // TEXT
+  textListLabel: 'rgb(169, 169, 169)',
 
   background: colors.lightBackground,
   backgroundDark: colors.dodgerBlue,
@@ -47,7 +72,6 @@ export const light = {
   lineColor: colors.paleGray,
   indicatorColor: colors.dodgerBlue,
   inactiveColor: '#a3a3a3',
-  primaryLight: colors.skyBlue,
   searchBackground: 'rgb(247,248,251)',
   status: colors.greenishCyan,
   placeholder: colors.cloudyBlue,
@@ -59,8 +83,16 @@ export type Theme = typeof light;
 
 export const dark = {
   primary: '#1F2324',
+  primaryLight: 'rgb(204, 224, 255)',
   disabled: colors.mediumGray,
   error: colors.tomato,
+
+  // BG
+  backgroundGray: 'rgb(245, 245, 245)',
+  backgroundListSeperator: 'rgb(128, 128, 128)',
+
+  // TEXT
+  textListLabel: 'rgb(169, 169, 169)',
 
   background: colors.darkBackground,
   backgroundDark: '#262A2C',
@@ -77,7 +109,6 @@ export const dark = {
   lineColor: '#515557',
   indicatorColor: 'white',
   inactiveColor: colors.paleGray,
-  primaryLight: '#262A2C',
   searchBackground: '#243447',
   status: colors.greenishCyan,
   placeholder: colors.cloudyBlue,

@@ -1,7 +1,10 @@
+export enum SubscribeType {
+  HOST = 'HOST', GEST = 'GEST'
+}
 export class RingerInjection
 {
   constructor(lingerSN: string, lingerName: string, gtt: number, ccPerHr: number, battery: number, restTime: number
-    , ivTotalAmount: number, ivCurrentAmount: number, ivInfo: IVInfo)
+    , ivTotalAmount: number, ivCurrentAmount: number, ivInfo: IVInfo, subscribeType: SubscribeType)
   {
     this.lingerSN = lingerSN;
     this.lingerName = lingerName;
@@ -13,6 +16,7 @@ export class RingerInjection
     this.restTime = restTime;
     this.ivCurrentAmount = ivCurrentAmount;
     this.ivInfo = ivInfo;
+    this.subscribeType = subscribeType;
   }
 
   lingerSN: string;
@@ -24,12 +28,15 @@ export class RingerInjection
   battery: number;
   restTime: number;
   ivInfo: IVInfo;
+  subscribeType: SubscribeType;
 }
 
 export interface IVInfo {
   totalAmount: number;
   period: number;
   speed: number;
+  speedAlarm: number | undefined;
+  amongAlarm: string;
 }
 
 export class IVInfoCrtDto implements IVInfo
@@ -42,6 +49,8 @@ export class IVInfoCrtDto implements IVInfo
     this.totalAmountStr = '';
     this.periodStr = '';
     this.speedStr = '';
+    this.speedAlarmStr = '';
+    this.amongAlarm = '';
   }
 
   totalAmount: number;
@@ -50,6 +59,9 @@ export class IVInfoCrtDto implements IVInfo
   totalAmountStr: string;
   periodStr: string;
   speedStr: string;
+  speedAlarmStr: string;
+  speedAlarm: number | undefined;
+  amongAlarm: string;
 }
 
 export class IVInfoError
@@ -59,9 +71,13 @@ export class IVInfoError
     this.totalAmount = '';
     this.period = '';
     this.speed = '';
+    this.speedAlarm = '';
+    this.amongAlarm = '';
   }
 
   totalAmount: string;
   period: string;
   speed: string;
+  speedAlarm: string;
+  amongAlarm: string;
 }

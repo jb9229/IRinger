@@ -28,6 +28,7 @@ const RightWrap = styled.View`
 `;
 const RingerName = styled.Text``;
 const ItemText = styled.Text``;
+const ErrorNotice = styled.Text``;
 
 interface Props {
   children?: ReactNode;
@@ -36,7 +37,7 @@ interface Props {
 const RingerMonitoringListItem:React.FC<Props> = (props): React.ReactElement =>
 {
   const notificationToken = useRecoilValue(notificationTokenState);
-  const { data, loading } = useSubscription(MI_SUBSCRIPTION, {
+  const { data, loading, error } = useSubscription(MI_SUBSCRIPTION, {
     variables: {
       dto:
       {
@@ -44,18 +45,23 @@ const RingerMonitoringListItem:React.FC<Props> = (props): React.ReactElement =>
         totalAmong: props.item.ivInfo.totalAmount,
         period: props.item.ivInfo.period,
         speed: props.item.ivInfo.speed,
-        notificationId: notificationToken
+        notificationId: notificationToken,
+        speedAlarm: props.item.ivInfo.speedAlarm,
+        amongAlarm: props.item.ivInfo.amongAlarm,
+        subscribeType: props.item.subscribeType
       }
     }
   });
 
   console.log('RingerMonitoringListItem monitoringInjection: ', data?.monitoringInjection);
   console.log('RingerMonitoringListItem notificationToken: ', notificationToken);
+  console.log('props.item: ', props.item);
   const ivAmountPercent =
     props.item.ivTotalAmount > 0 ? (props.item.ivCurrentAmount / props.item.ivTotalAmount) * 100 : 0;
 
   return (
     <Container>
+      <ErrorNotice>{error?.message}</ErrorNotice>
       <LeftWrap>
         <RingerBar percent={data?.monitoringInjection?.restAmong || 3} />
       </LeftWrap>

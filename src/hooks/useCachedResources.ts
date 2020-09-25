@@ -37,7 +37,11 @@ export async function loadResourcesAndDataAsync(): Promise<boolean>
     // Load fonts
     await Font.loadAsync({
       ...Ionicons.font,
-      'space-mono': require('assets/fonts/SpaceMono-Regular.ttf')
+      'space-mono': require('assets/fonts/SpaceMono-Regular.ttf'),
+      'nanumsquare-roundR': require('assets/fonts/NanumSquareRoundR.ttf'),
+      'nanumbarun-gothic': require('assets/fonts/NanumBarunGothic.ttf'),
+      'nanumbarun-gothic-b': require('assets/fonts/NanumBarunGothic.ttf'),
+      'nanum-pen': require('assets/fonts/NanumPen.ttf')
     });
 
     return true;

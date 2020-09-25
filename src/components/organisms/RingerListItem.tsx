@@ -6,7 +6,6 @@ import styled from 'styled-components/native';
 const Container = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-around;
-  border-bottom-width: 1px;
   padding: 15px;
 `;
 const RingerStatus = styled.Text`

@@ -9,6 +9,7 @@ export const RINGER_LIST = gql`
       ivSpeed
       ivPeriod
       status
+      ivStatus
     }
   }
 `;

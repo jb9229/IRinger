@@ -45,7 +45,6 @@ function RootNavigator(): React.ReactElement
 {
   const notificationListener = React.useRef();
   const responseListener = React.useRef();
-  const [notification, setNotification] = React.useState();
   const setNotificationTokenState = useSetRecoilState(notificationTokenState);
 
   React.useEffect(() =>
@@ -55,12 +54,12 @@ function RootNavigator(): React.ReactElement
 
     notificationListener.current = Notifications.addNotificationReceivedListener((notification) =>
     {
-      notification && setNotification(notification);
+      console.log('>>> received: ', notification);
     });
 
     responseListener.current = Notifications.addNotificationResponseReceivedListener((response) =>
     {
-      console.log(response);
+      console.log('>>> response received: ', response);
     });
 
     return () =>

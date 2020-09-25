@@ -1,12 +1,17 @@
 import * as React from 'react';
 
+import { DefaultStyledProps, koFont } from 'src/theme';
+
+import { ListSeperator } from '../molecules/Styled';
 import { Modal } from 'react-native';
 import ModalHeader from '../molecules/ModalHeader';
 import { RINGER_LIST } from 'src/apollo/query';
 import { Ringer } from 'src/container/ringer/create/type';
 import RingerListItem from '../organisms/RingerListItem';
+import { monitoringListState } from 'src/container/ringer/monitoring/store';
 import styled from 'styled-components/native';
 import { useQuery } from '@apollo/client';
+import { useRecoilValue } from 'recoil';
 
 const Container = styled.View`
   flex: 1;
@@ -16,22 +21,34 @@ const Container = styled.View`
   /* width: 100px;
   height: 100px; */
 `;
-const Contents = styled.View`
+const Contents = styled.View<DefaultStyledProps>`
   background-color: white;
-  width: 80%;
+  width: 90%;
   height: 80%;
+  border-radius: 4px;
 `;
-const StyledScrollView = styled.ScrollView``;
+const StyledScrollView = styled.ScrollView.attrs((props) => ({
+  contentContainerStyle: {
+    backgroundColor: props.theme.primaryLight,
+    margin: 10,
+    borderRadius: 20
+  }
+}))`
+  border-radius: 20px;
+  margin-bottom: 20px;
+`;
 const Notice = styled.Text``;
 const Header = styled.View`
+  font-family: ${koFont.FontBatang};
   flex-direction: row;
   justify-content: space-around;
   padding-left: 15px;
   padding-right: 15px;
+  margin-bottom: 20px;
 `;
 const HeaderText = styled.Text`
   text-align: center;
-  font-size: 21px;
+  font-size: 17px;
   font-weight: bold;
 `;
 const StatusHeader = styled(HeaderText)`
@@ -51,18 +68,33 @@ interface Props {
 }
 const SelectRingerListModal:React.FC<Props> = (props): React.ReactElement =>
 {
-  const ringersRsp = useQuery(RINGER_LIST);
-  const ringerList = ringersRsp.data?.ringers || [];
-  const [visible, setVisible] = React.useState(props.visible);
-
   React.useEffect(() =>
   {
     setVisible(props.visible);
     if (props.visible)
     {
-      ringersRsp.refetch();
+      ringersRsp?.refetch && ringersRsp.refetch();
     }
   }, [props.visible]);
+
+  /**
+   * Server Stats
+   */
+  const ringersRsp = useQuery(RINGER_LIST, {
+    onError: (error) =>
+    {
+      console.error(error);
+    }
+  });
+
+  /**
+   * UI Stats
+   */
+  const ringerList = ringersRsp.data?.ringers || [];
+  const [visible, setVisible] = React.useState(props.visible);
+  const monitoringList = useRecoilValue(monitoringListState);
+  const monitoringSNList = monitoringList.map((monitoring) => monitoring.lingerSN);
+  const filteredRingerList = ringerList.filter((ringer: Ringer) => !monitoringSNList.includes(ringer.sn));
 
   return (
     <Modal
@@ -78,16 +110,18 @@ const SelectRingerListModal:React.FC<Props> = (props): React.ReactElement =>
             <SNHeader>시리얼넘버</SNHeader>
             <NameHeader>링거명</NameHeader>
           </Header>
-          <Notice>(모니터링중인 링거는 뺄 예정 입니다)</Notice>
           <StyledScrollView>
-            {ringerList.map((ringer: Ringer, index: number) =>
-              <RingerListItem key={`KEY_${index}`} item={ringer}
-                onPress={() =>
-                {
-                  props.onSelectRinger(ringer);
-                  props.onClose();
-                }}
-              />)}
+            {filteredRingerList.map((ringer: Ringer, index: number) =>
+              <React.Fragment key={`KEY_${index}`}>
+                <RingerListItem item={ringer}
+                  onPress={() =>
+                  {
+                    props.onSelectRinger(ringer);
+                    props.onClose();
+                  }}
+                />
+                {index < filteredRingerList.length - 1 && <ListSeperator /> }
+              </React.Fragment>)}
           </StyledScrollView>
         </Contents>
       </Container>

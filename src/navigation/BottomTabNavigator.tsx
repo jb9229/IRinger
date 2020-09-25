@@ -89,7 +89,7 @@ function AppSettingNavigator(): React.ReactElement
       <AppSettingStack.Screen
         name="AppSettingScreen"
         component={AppSettingScreen}
-        options={{ headerTitle: 'App Setting' }}
+        options={{ headerTitle: '내 정보' }}
       />
     </AppSettingStack.Navigator>
   );

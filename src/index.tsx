@@ -27,8 +27,14 @@ export default function App(): React.ReactElement | null
 
   if (!isResourceLoadingComplete || !isCheckUpdateComplete)
   {
-    if (!isResourceLoadingComplete) { return <ActIndicator msg={getString('loading.resouce')} /> }
-    if (!isCheckUpdateComplete) { return <ActIndicator msg={getString('loading.app_update')} /> }
+    if (!isResourceLoadingComplete)
+    {
+      return <ActIndicator msg={getString('loading.resouce')} color="rgb(58,139,255)" />;
+    }
+    if (!isCheckUpdateComplete)
+    {
+      return <ActIndicator msg={getString('loading.app_update')} color="rgb(58,139,255)" />;
+    }
     return null;
   }
   else
