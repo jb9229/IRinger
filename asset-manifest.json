@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/IRinger/static/js/app.f9c7cff0.chunk.js",
-    "app.js.map": "/IRinger/static/js/app.f9c7cff0.chunk.js.map",
+    "app.js": "/IRinger/static/js/app.52d88e24.chunk.js",
+    "app.js.map": "/IRinger/static/js/app.52d88e24.chunk.js.map",
     "runtime~app.js": "/IRinger/static/js/runtime~app.6a45c0df.js",
     "runtime~app.js.map": "/IRinger/static/js/runtime~app.6a45c0df.js.map",
-    "static/js/2.48b3864e.chunk.js": "/IRinger/static/js/2.48b3864e.chunk.js",
-    "static/js/2.48b3864e.chunk.js.map": "/IRinger/static/js/2.48b3864e.chunk.js.map",
+    "static/js/2.85b021bc.chunk.js": "/IRinger/static/js/2.85b021bc.chunk.js",
+    "static/js/2.85b021bc.chunk.js.map": "/IRinger/static/js/2.85b021bc.chunk.js.map",
     "fonts/AntDesign.ttf": "/IRinger/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/IRinger/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/IRinger/./fonts/Feather.ttf",
@@ -17,6 +17,9 @@
     "fonts/Ionicons.ttf": "/IRinger/./fonts/Ionicons.ttf",
     "fonts/MaterialCommunityIcons.ttf": "/IRinger/./fonts/MaterialCommunityIcons.ttf",
     "fonts/MaterialIcons.ttf": "/IRinger/./fonts/MaterialIcons.ttf",
+    "fonts/NanumBarunGothic.ttf": "/IRinger/./fonts/NanumBarunGothic.ttf",
+    "fonts/NanumPen.ttf": "/IRinger/./fonts/NanumPen.ttf",
+    "fonts/NanumSquareRoundR.ttf": "/IRinger/./fonts/NanumSquareRoundR.ttf",
     "fonts/SimpleLineIcons.ttf": "/IRinger/./fonts/SimpleLineIcons.ttf",
     "fonts/SpaceMono-Regular.ttf": "/IRinger/./fonts/SpaceMono-Regular.ttf",
     "favicon-16.png": "/IRinger/favicon-16.png",
@@ -25,14 +28,14 @@
     "index.html": "/IRinger/index.html",
     "manifest.json": "/IRinger/manifest.json",
     "serve.json": "/IRinger/serve.json",
-    "static/js/2.48b3864e.chunk.js.LICENSE.txt": "/IRinger/static/js/2.48b3864e.chunk.js.LICENSE.txt",
+    "static/js/2.85b021bc.chunk.js.LICENSE.txt": "/IRinger/static/js/2.85b021bc.chunk.js.LICENSE.txt",
     "static/media/iRingerIcon.png": "/IRinger/static/media/iRingerIcon.6ee96ef5.png",
     "static/media/star_d.png": "/IRinger/static/media/star_d.758176d2.png",
     "static/media/star_s.png": "/IRinger/static/media/star_s.1cd786cb.png"
   },
   "entrypoints": [
     "static/js/runtime~app.6a45c0df.js",
-    "static/js/2.48b3864e.chunk.js",
-    "static/js/app.f9c7cff0.chunk.js"
+    "static/js/2.85b021bc.chunk.js",
+    "static/js/app.52d88e24.chunk.js"
   ]
 }
