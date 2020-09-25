@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/IRinger/precache-manifest.2eafe51c12283e3bbb499a5511fe80d2.js"
+  "/IRinger/precache-manifest.267f8879c8efa2ed38d6a9fe51e05686.js"
 );
 
 workbox.skipWaiting();
